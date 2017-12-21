@@ -1,0 +1,165 @@
+<!-- Maps Container -->
+<div class="maps-container">
+
+    <!-- Add New Map -->
+    <div class="new-map">
+
+        <form>
+            <!-- Image -->
+            <img ngf-src="file || 'https://www.gumtree.com/static/1/resources/assets/rwd/images/orphans/a37b37d99e7cef805f354d47.noimage_thumbnail.png' ">
+
+            <!-- City -->
+            <p>City</p>
+            <input type="text" placeholder="City" ng-model="terCity">
+
+            <!-- Territory Number -->
+            <p>Territory #</p>
+            <input type="number" placeholder="Territory #" ng-model="terNum">
+
+            <!-- Territory Type -->
+            <p>Territory Type</p>
+            <select ng-model="terType">
+                <option value="Local">Local</option>
+                <option value="Letter">Letter</option>
+                <option value="Business">Business</option>
+            </select>
+
+            <!-- Upload Territory Image -->
+            <p>Upload Territory Image</p>
+            <button ngf-select ng-model="file" ngf-pattern="'image/*'">Upload Territory Image</button>
+
+            <button class="save" ng-click="saveTer()">Save</button>
+            <button class="cancel" ng-click="resetTer()">Cancel</button>
+        </form>
+
+    </div>
+
+    <!-- Maps: Scrollable -->
+    <div class="maps">
+
+        <!-- Search Bar -->
+        <div class="search">
+            <input type="text" id="mapSearchBox" placeholder="Search Territory">
+            <img src="img/icons/Add Filled-50.png" alt="Add New Map" ng-click="showNewMapPanel()">
+        </div>
+
+        <!-- Map Content -->
+        <div class="map-content">
+
+            <!-- Map Link -->
+            <div class="inner-map-container" ng-repeat="map in maps" ng-click="showTerOptions(ma.id)">
+                <div class="map-link">
+                        <img src="{{ map.img_url }}" alt="Territory Image | #{{ map.tNum }}" />
+                        <h4>Territory #{{ map.tNum }}</h4>
+                </div>
+            </div>
+
+            <!-- Map Link -->
+            <div class="inner-map-container" ng-click="showTerOptions(1)">
+                <div class="map-link">
+                    <img src="https://www.gumtree.com/static/1/resources/assets/rwd/images/orphans/a37b37d99e7cef805f354d47.noimage_thumbnail.png" alt="Territory Image | #" />
+                    <h4>Territory #</h4>
+                </div>
+            </div>
+
+            <div class="inner-map-container" ng-click="showTerOptions(2)">
+                <div class="map-link">
+                    <img src="https://www.gumtree.com/static/1/resources/assets/rwd/images/orphans/a37b37d99e7cef805f354d47.noimage_thumbnail.png" alt="Territory Image | #" />
+                    <h4>Territory #</h4>
+                </div>
+            </div>
+
+
+        </div>
+
+    </div>
+
+    <!-- Map Info: Scrollable -->
+    <div class="map-info" ng-repeat="option in options" scroll>
+
+        <!-- Map Info -->
+        <div class="row">
+
+            <div class="row50">
+                <img src="{{ option.img_url }}" alt="">
+            </div>
+
+            <div class="row50">
+
+                <h1>Territory #{{ option.tNum }} | <b>{{ option.tCity }}</b></h1>
+                    
+            </div>
+
+        </div>
+
+        <!-- Last Check Out -->
+        <div class="map-checkouts">
+
+            <!-- Maps Checked Out Currently -->
+            <div class="checkout" ng-repeat="checkOut in checkedOut">
+
+                Hello World
+
+            </div>
+
+            <!-- Maps Checked Out Currently -->
+            <div class="checkout" ng-repeat="checkOut in checkedOut">
+
+                Hello World
+
+            </div>
+
+            <!-- Maps Checked Out Currently -->
+            <div class="checkout" ng-repeat="checkOut in checkedOut">
+
+                Hello World
+
+            </div>
+
+            <!-- Maps Checked Out Currently -->
+            <div class="checkout" ng-repeat="checkOut in checkedOut">
+
+                Hello World
+
+            </div>
+
+            <!-- Maps Checked Out Currently -->
+            <div class="checkout" ng-repeat="checkOut in checkedOut">
+
+                Hello World
+
+            </div>
+
+            <!-- Maps Checked Out Currently -->
+            <div class="checkout" ng-repeat="checkOut in checkedOut">
+
+                Hello World
+
+            </div>
+
+            <!-- Maps Checked Out Currently -->
+            <div class="checkout" ng-repeat="checkOut in checkedOut">
+
+                Hello World
+
+            </div>
+
+            <!-- Maps Checked Out Currently -->
+            <div class="checkout" ng-repeat="checkOut in checkedOut">
+
+                Hello World
+
+            </div>
+
+            <!-- Maps Checked Out Currently -->
+            <div class="checkout" ng-repeat="checkOut in checkedOut">
+
+                Hello World
+
+            </div>
+            
+        </div>
+
+    </div>
+
+</div>

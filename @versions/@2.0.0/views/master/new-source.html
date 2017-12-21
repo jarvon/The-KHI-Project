@@ -1,0 +1,246 @@
+<div class="container">
+    
+    <!-- New Life And Ministry -->
+    <div class="schedule">
+        
+        <div class="save-container">
+            
+            <!-- Save Button -->
+            <button ng-if="!id" ng-click="preCheck()" class="save">
+                <img src="img/icons/Save-50.png">
+            </button>
+            
+            <!-- Update -->
+            <button ng-if="id" ng-click="update()" class="save">
+                <img src="img/icons/Save-50.png">
+            </button>
+            
+        </div>
+        
+        <!-- Life And Ministry Schedule Template -->
+        <div class="life-ministry">
+            
+            <div class="sch-name">
+                
+                Our Source Material | New
+                
+            </div>
+            
+            <hr>
+            
+            <!-- Clear Fix Container -->
+            <div class="clearFix">
+               
+               <!-- Assignment Left -->
+                <div class="left">
+                    <li class="assignments">
+                        <h4 class="light-grey-border-bottom">Start Date</h4>
+                        <input type="date" ng-model="sDate" ng-change="dateChange('sDate', sDate)" />
+                    </li>
+                </div>
+                
+                <!-- Assignment Left -->
+                <div class="left">
+                    <li class="assignments">
+                        <h4 class="light-grey-border-bottom">End Date</h4>
+                        <input type="date" ng-model="eDate" ng-change="dateChange('eDate', eDate)" />
+                    </li>
+                </div>
+                
+                <!-- Assignment Left -->
+                <div class="left">
+                    <li class="assignments">
+                        <h4 class="light-grey-border-bottom">Weekly Bible Reading</h4>
+                        <input type="text" ng-model="wbr" ng-change="materialSwap('wbr',wbr)" />
+                    </li>
+                </div>
+                
+                <!-- Assignment Left -->
+                <div class="left">
+                    <li class="assignments">
+                        <h4 class="light-grey-border-bottom">Song #1</h4>
+                        <input class="small" type="number" min="1" max="151" ng-model="song1" ng-change="materialSwap('song1',song1)" />
+                    </li>
+                </div>
+                
+            </div><!-- Clear Fix -->
+            
+            <!-- Treasures Title -->
+            <h1 class="title1">Treasures From God's Word</h1>
+            
+            <!-- Clear Fix Container -->
+            <div class="clearFix">
+                
+                <!-- Talk 1 -->
+                <div class="left">
+                    <div class="assignments">
+                        <h4 class="treasures">Talk #1</h4>
+                        <input type="text" ng-model="talk1" ng-change="materialSwap('talk1',talk1)" />
+                    </div>
+                </div>
+                
+                <!-- Talk 2 | Digging -->
+                <div class="left">
+                    <div class="assignments">
+                        <h4 class="treasures">Talk #2</h4>
+                        <input ng-disabled="true" type="text" ng-model="talk2" />
+                        
+                    </div>
+                </div>
+
+                <!-- Bible Reading -->
+                <div class="left">
+                    <div class="assignments">
+                        <h4 class="treasures">Bible Reading</h4>
+                        <input type="text" ng-model="br" ng-change="materialSwap('br',br)" />
+                        
+                    </div>
+                </div>
+                
+            </div><!-- Clear Fix -->
+            
+            <!-- Apply Yourself Title -->
+            <h1 class="title2">Apply Yourself To The Field Ministry</h1>
+            
+            <!-- Clear Fix Container -->
+            <div class="clearFix">
+                
+                <div>
+                    
+                    <div class="left">
+                        <div class="assignments">
+                            <h4 class="apply">Sample Presentations (0 = No & 1 = Yes)</h4>
+                            <input class="small" type="number" min="0" max="1" ng-model="videoOption" ng-change="materialSwap('videoOption',videoOption)" />
+                        </div>
+                    </div>
+                    
+                </div>
+                
+                <div ng-if="videoOption == 0">
+                    
+                    <div class="left">
+                       
+                        <div class="assignments">
+                            <h4 class="apply">Part #1</h4>
+                            <input type="text" ng-model="part1" ng-change="materialSwap('part1',part1)" />
+                        </div>
+                        
+                    </div>
+                    
+                    <div class="left">
+                       
+                        <div class="assignments">
+                            <h4 class="apply">Part #1 | Material</h4>
+                            <input type="text" ng-model="part1M" ng-change="materialSwap('part1M',part1M)" />
+                        </div>
+                        
+                    </div>
+
+                    <div class="left">
+                       
+                        <div class="assignments">
+                            <h4 class="apply">Part #2</h4>
+                            <input type="text" ng-model="part2" ng-change="materialSwap('part2',part2)" />
+                        </div>
+                        
+                    </div>
+                    
+                    <div class="left">
+                       
+                        <div class="assignments">
+                            <h4 class="apply">Part #2 | Material</h4>
+                            <input type="text" ng-model="part2M" ng-change="materialSwap('part2M',part2M)" />
+                        </div>
+                        
+                    </div>
+
+                    <div class="left">
+                       
+                        <div class="assignments">
+                            <h4 class="apply">Part #3</h4>
+                            <input type="text" ng-model="part3" ng-change="materialSwap('part3',part3)" />
+                        </div>
+                        
+                    </div>
+                    
+                    <div class="left">
+                       
+                        <div class="assignments">
+                            <h4 class="apply">Part #3 | Material</h4>
+                            <input type="text" ng-model="part3M" ng-change="materialSwap('part3M',part3M)" />
+                        </div>
+                        
+                    </div>
+                    
+                </div>
+                
+            </div><!-- Clear Fix -->
+            
+            <!-- Living Title -->
+            <h1 class="title3">Living As Christians</h1>
+            
+            <!-- Clear Fix Container -->
+            <div class="clearFix">
+                
+                <div class="left">
+                    <div class="assignments">
+                        <h4 class="living">Song #2</h4>
+                        <input class="small" type="number" min="1" max="151" ng-model="song2" ng-change="materialSwap('song2',song2)" />
+                    </div>
+                </div>
+                
+                <div class="left">
+                    <div class="assignments">
+                        <h4 class="living">Extra Part & Local Only (1 = Yes; 0 = No)</h4>
+                        <input class="small" type="number" min="0" max="1" ng-model="ep" ng-change="materialSwap('ep',ep)" />
+                        <input class="small" type="number" min="0" max="1" ng-model="localOnly" />
+                    </div>
+                </div>
+                
+                <div ng-if="ep === 1" class="left">
+                    <div class="assignments"> 
+                        <h4 class="living">Local Needs or Talk</h4>
+                        <input type="text" ng-model="local" ng-change="materialSwap('local',local)" />
+                        <input class="small" type="number" min="0" max="15" ng-model="localTime" ng-change="materialSwap('localTime',localTime)" /><br>
+                    </div>
+                </div>
+                
+                <div ng-if="localOnly !== 1" class="left">
+                    
+                    <div class="assignments">
+                        
+                        <h4 class="living">Talk 3</h4>
+                        <input type="text" ng-model="talk4" ng-change="materialSwap('talk4',talk4)" />
+                        <input class="small" type="number" min="0" max="15" ng-model="talk4Time" ng-change="materialSwap('talk4Time',talk4Time)" /><br>
+                    </div>
+                    
+                </div>
+
+                <div class="left">
+                    
+                    <div class="assignments">
+                        
+                        <h4 class="living">Bible Study</h4>
+                        <input type="text" ng-model="cbs" ng-change="materialSwap('cbs',cbs)" />
+                        
+                    </div>
+                </div>
+
+                <div class="left">
+                    
+                    <div class="assignments">
+                        
+                        <h4 class="living">Song #3</h4>
+                        <input class="small" type="number" min="1" max="151" ng-model="song3" ng-change="materialSwap('song3',song3)"  />
+                        
+                    </div>
+                    
+                </div>
+                
+            </div>
+            
+        </div>
+        
+    </div> <!-- Life SCH -->
+    
+</div>

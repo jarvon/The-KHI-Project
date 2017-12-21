@@ -1,0 +1,74 @@
+<div class="dashContainer">
+
+    <div class="admin-welcome">
+            
+        Matteson Congregation
+    
+    </div>
+    
+    <div class="friendsContainer">
+    
+        <div class="search">
+            
+            <h1 class="title">Add New Friend</h1>
+            
+            <input type="text" ng-model="searchFriends" placeholder="Search Friends">
+            
+            <img class="newFriendButton" ng-click="reset()" src="img/icons/Add%20Filled-50.png" />
+            
+        </div>
+        
+        <div class="newFriend">
+            
+            <h3>First Name</h3>
+            <input type="text" ng-model="newFirstName" ng-change="nameCheck()" placeholder="First Name" />
+            <img ng-if="newNameCheck === false" class="status" src="img/icons/Cancel-50-secColor.png" />
+            <img ng-if="newNameCheck === true" class="status" src="img/icons/Checked-50.png" />
+            
+            <h3>Last Name</h3>
+            <input type="text" ng-model="newLastName" ng-change="nameCheck()" placeholder="Last Name" />
+            <img ng-if="newNameCheck === false" class="status" src="img/icons/Cancel-50-secColor.png" />
+            <img ng-if="newNameCheck === true" class="status" src="img/icons/Checked-50.png" />
+            
+            
+            <h3>Email (Optional)</h3>
+            <input type="text" placeholder="Email" />
+            
+            <h3>Gender</h3>
+            <select ng-model="newFriendGender">
+                <option value="brother">Brother</option>
+                <option value="sister">Sister</option>
+            </select>
+            
+            <h3>Save or Update</h3>
+            <button class="save" ng-if="nameSaved === false" ng-disabled="newNameCheck === false || newNameCheck === undefined" ng-click="addFriend()">Save</button>
+            
+            <div ng-class="addFriendSuccess" class="success">
+                YOUR FRIENDS HAVE BEEN ADDED!
+            </div>
+            
+        </div>
+        
+        <div class="results">
+        
+            <li ng-repeat="friend in allFriends | filter: searchFriends | orderBy: 'full_name'">
+                
+                <!-- Brother -->
+                <img ng-if="friend.brother === '1'" class="gender" src="img/icons/User-50.png"/>
+                
+                <!-- Sister -->
+                <img ng-if="friend.sister === '1'" class="gender" src="img/icons/User-Female-50.png"/>
+                
+                <!-- Name -->
+                {{friend.full_name}}
+                
+                <!-- Options -->
+                <img class="options" src="img/icons/Edit%20Filled-50.png"/>
+                
+            </li>
+        
+        </div>
+        
+    </div>
+    
+</div>

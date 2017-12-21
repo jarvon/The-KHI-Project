@@ -1,0 +1,39 @@
+<div class="login-container">
+    
+    <form class="login-form">
+        
+        <!-- Logo -->
+        <div class="logo"></div>
+        
+        <!-- Login Links -->
+        <div class="links">
+            
+            <!-- Login Type -->
+            <h3>Admin | Login</h3>
+            
+            <!-- Email -->
+            <input class="input wide" type="email" ng-model="email" placeholder="Email (ex. example@khi.com)">
+            
+                <br>
+            
+            <!-- Password -->
+            <input class="input" type="password" ng-model="password" placeholder="Password (ex. 123456)">
+            
+            <button class="login-button" ng-click="loginAdmin()" type="submit">
+                <img src="../img/icons/Add%20Filled-50-white.png" />
+            </button>
+            
+            <!-- User Switch -->
+            <button class="login  small" ui-sref="Login">
+                Congregation
+            </button>
+            
+            <button class="login small">
+                Help
+            </button>
+            
+        </div>
+        
+    </form>
+    
+</div>

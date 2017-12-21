@@ -1,0 +1,113 @@
+<html>
+    <head>
+        
+        <!-- Base URL | Change to your URL -->
+        <script>
+            
+            //Get Base Url
+            var baseurl = window.location.origin + window.location.pathname;
+
+            //Generate Base URl
+            document.write('<base href="' + baseurl + '" />');
+            
+
+        </script>
+        
+        <!-- Viewport -->
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+
+        <!-- Apple Touch Icon -->
+        <link rel="apple-touch-icon" href="img/icons/HomeScreenIcons/KH-Home.png">
+
+        <!-- WebApp Name -->
+        <meta name="apple-mobile-web-app-title" content="MyKHInfo">
+        
+        <!-- Site Title -->
+        <title>Kingdom Hall Info | The Information Board</title>
+        
+        <!-- Stylesheets -->
+        <link rel="stylesheet" type="text/css" href="css/style.css">
+        
+        <!-- JQuery -->
+        <script src="scripts/jquery-3.1.1.min.js"></script>
+        
+        <!-- PrintThisJS -->
+        <script src="scripts/printthis.js"></script>
+        
+        <!-- Moments JS -->
+        <script src="scripts/moment.js"></script>
+
+        <!-- Fix To Top -->
+        <script src="scripts/fixto.js"></script>
+        
+        <!-- Fix To Top -->
+        <script src="scripts/jquery.sticky-kit.min.js"></script>
+        
+        <!-- Angular -->
+        <script src="scripts/angular.js"></script>
+        
+        <!-- UI-Router -->
+        <script src="scripts/ui-router.js"></script>
+        
+        <!-- Session Storage -->
+        <script src="scripts/angular-local-storage.min.js"></script>
+        
+        <!-- KHI AppJS -->
+        <script src="app/khi.js"></script>
+        
+        <!-- KHI Core -->
+        <script src="scripts/khi-core.js"></script>
+        
+    </head>
+    <body ng-app="khi">
+        
+        <!-- Header -->
+        <div class="header" ng-class="toggleHeader" ng-controller="header">
+            
+            <!-- Hamburger Icon | Toggle Sidebar -->
+            <div ng-click="toggleSidebar()" ng-class="hamToggle" class="ham">
+                <div class="pat1"></div>
+                <div class="pat2"></div>
+                <div class="pat3"></div>
+            </div>
+            
+            <!-- Header Content -->
+            <div class="header-content">
+                
+                <!-- Page Title -->
+                <h1 class="page-title">{{ title }}</h1>
+                
+            </div>
+
+            <!-- Icon Links -->
+            <div class="ico-links">
+
+                <div class="ico-container">
+                    <div class="ico" ui-sref="Login" ng-click="logout('guest')">
+                        <img src="img/icons/icons8-SignOut-64.png" alt="">
+                    </div>
+                </div>
+
+                <div class="ico-container">
+                    <div class="ico" ng-click="refresh()">
+                        <img src="img/icons/icons8-Synchronize-64.png" alt="">
+                    </div>
+                </div>
+
+            </div>
+            
+        </div>
+        
+        <!-- Page -->
+        <div class="page">
+            
+            <!-- Main View -->
+            <ui-view name="main"></ui-view>
+            
+        </div>
+        
+        <!-- Sidebar -->
+        <ui-view name="sidebar"></ui-view>
+        
+    </body>
+</html>

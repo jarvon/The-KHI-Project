@@ -1,0 +1,93 @@
+.header {
+    background-color: $lightWhite;
+
+    .ham {
+        width: 20px;
+        background-color: $lightWhite;
+
+        .pat1 {
+            position: absolute;
+            height: 2px;
+            width: 25px;
+            margin-top: 17px;
+            border-radius: 2px;
+            background-color: $jwLightBlue;
+            //transition: all .3s ease-in-out;
+            
+        }
+        
+        .pat2 {
+            position: absolute;
+            height: 2px;
+            width: 25px;
+            margin-top: 24px;
+            border-radius: 2px;
+            background-color: $jwLightBlue;
+            //transition: all .3s ease-in-out;
+        }
+        
+        .pat3 {
+            position: absolute;
+            height: 2px;
+            width: 25px;
+            margin-top: 31px;
+            border-radius: 2px;
+            background-color: $jwLightBlue;
+            //transition: all .3s ease-in-out;
+        }
+
+    }
+
+    .ham-right {
+        transform: translateX(calc(100vw - 70px)) !important;
+        -webkit-transform: translateX(calc(100vw - 70px)) !important;
+
+        .pat1 {
+            transform: rotate(50deg);
+            -webkit-transform: rotate(50deg);
+            margin: 23px 0px 0px 0px;
+        }
+
+        .pat2 {
+            transform: rotate(50deg);
+            -webkit-transform: rotate(50deg);
+            margin: 23px 0px 0px 0px;
+        }
+
+        .pat3 {
+            transform: rotate(-50deg);
+            -webkit-transform: rotate(-50deg);
+            margin: 23px 0px 0px 0px;
+        }
+    }
+
+    .header-content {
+        margin-left: 45px;
+
+        .page-title {
+            margin: 3.5px 0;
+            font-size: 15px;
+            font-weight: 400;
+            color: $mainGrey;
+            padding: 10px 0px;
+        }
+    }
+
+    .ico-links {
+        width: 80px;
+        height: 50px;
+        margin-right: 4px !important;
+        padding: 4px;
+
+        .ico {
+            float: left;
+            height: 23px !important;
+            width: 20px;
+
+            img {
+                height: 23px !important;
+                width: 23px !important;
+            }
+        }
+    }
+}

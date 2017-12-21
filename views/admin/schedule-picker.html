@@ -1,0 +1,190 @@
+<div class="sch-picker-container">
+    
+    <!-- Our Christian Life And Ministry | All Schedules -->
+    <div ng-if="stateName === 'Admin.All'" class="sch-picker">
+        
+        <!-- Name Container -->
+        <div ng-class="options" class="name">
+            
+            <h2>Life And Ministry</h2>
+            
+            <button ng-click="showOptions()" class="picker-button">View Schedules</button>
+        
+        </div>
+        
+        <!-- Option Containers -->
+        <div class="options" ng-class="name">
+            
+            <button ng-click="showName()" class="cancel">Cancel</button>
+            
+            <div ng-repeat="src in source">
+            
+                <a ui-sref="Admin.UpdateLM({source: src.source, id: src.id})">
+                    <li>{{ src.sDate | utcConvert | date }} - {{ src.eDate | utcConvert | date }}</li>
+                </a>
+                
+            </div>
+            
+        </div>
+        
+    </div>
+    
+    <!-- Our Stage and Attendants | All Schedules -->
+    <div ng-if="stateName === 'Admin.All'" class="sch-picker">
+        
+        <!-- Name Container -->
+        <div ng-class="options" class="name">
+            
+            <h2>Stage And Attendants</h2>
+            
+            <button ng-click="showOptions()" class="picker-button">View Schedules</button>
+        
+        </div>
+        
+        <!-- Option Containers -->
+        <div class="options" ng-class="name">
+            
+            <button ng-click="showName()" class="cancel">Cancel</button>
+            
+            <div ng-repeat="src in sourceAttend">
+            
+                <a ui-sref="Admin.UpdateAttend({id: src.id})">
+                    <li>{{ src.sDate | utcConvert | date: 'MMMM yyyy' }}</li>
+                </a>
+                
+            </div>
+            
+        </div>
+        
+    </div>
+    
+    <!-- Our Incoming Speakers | All Schedules -->
+    <div ng-if="stateName === 'Admin.All'" class="sch-picker">
+        
+        <!-- Name Container -->
+        <div ng-class="options" class="name">
+            
+            <h2>Incoming Speakers</h2>
+            
+            <button ng-click="showOptions()" class="picker-button">View Schedules</button>
+        
+        </div>
+        
+        <!-- Option Containers -->
+        <div class="options" ng-class="name">
+            
+            <button ng-click="showName()" class="cancel">Cancel</button>
+            
+            <div ng-repeat="src in sourceIncoming">
+            
+                <a ui-sref="Admin.UpdateIncoming({id: src.id})">
+                    <li>{{ src.sDate | utcConvert | date: 'MMMM yyyy' }}</li>
+                </a>
+                
+            </div>
+            
+        </div>
+        
+    </div>
+
+    <!-- Our Outgoing Speakers | All Schedules -->
+    <div ng-if="stateName === 'Admin.All'" class="sch-picker">
+        
+        <!-- Name Container -->
+        <div ng-class="options" class="name">
+            
+            <h2>Outgoing Speakers</h2>
+            
+            <button ng-click="showOptions()" class="picker-button">View Schedules</button>
+        
+        </div>
+        
+        <!-- Option Containers -->
+        <div class="options" ng-class="name">
+            
+            <button ng-click="showName()" class="cancel">Cancel</button>
+            
+            <div ng-repeat="src in sourceOutgoing">
+            
+                <a ui-sref="Admin.UpdateOutgoing({id: src.id})">
+                    <li>{{ src.sDate | utcConvert | date: 'MMMM yyyy' }}</li>
+                </a>
+                
+            </div>
+            
+        </div>
+        
+    </div>
+    
+    <!-- Our Christian Life And Ministry | New Schedules -->
+    <div ng-if="stateName === 'Admin.New'" class="sch-picker">
+        
+        <!-- Name Container -->
+        <div ng-class="options" class="name">
+            
+            <h2>Life And Ministry</h2>
+            
+            <button ng-click="showOptions()" class="picker-button">New Schedule</button>
+        
+        </div>
+        
+        <!-- Option Containers -->
+        <div class="options" ng-class="name">
+            
+            <button ng-click="showName()" class="cancel">Cancel</button>
+            
+            <div ng-repeat="src in source">
+            
+                <a ui-sref="Admin.NewLM({source: src.id})" ng-click="futureSource(src.id)">
+                    <li>{{ src.mm_sdate | utcConvert | date }} - {{ src.mm_edate | utcConvert | date }}</li>
+                </a>
+                
+            </div>
+            
+        </div>
+        
+    </div>
+    
+    <!-- Platform & Attendants | New Schedule -->
+    <div ng-if="stateName === 'Admin.New'" class="sch-picker">
+        
+        <!-- Name Container -->
+        <div class="name">
+            
+            <h2>Stage And Attendants</h2>
+            
+            <button ui-sref="Admin.NewAttendant" class="picker-button">New Schedule</button>
+        
+        </div>
+        
+    </div>
+    
+    <!-- Our Incoming Speakers | New Schedule -->
+    <div ng-if="stateName === 'Admin.New'" class="sch-picker">
+        
+        <!-- Name Container -->
+        <div class="name">
+            
+            <h2>Incoming Speakers</h2>
+            
+            <button ui-sref="Admin.NewIncoming" class="picker-button">New Schedule</button>
+        
+        </div>
+        
+    </div>
+
+    <!-- Our Outgoing Speakers | New Schedule -->
+    <div ng-if="stateName === 'Admin.New'" class="sch-picker">
+        
+        <!-- Name Container -->
+        <div class="name">
+            
+            <h2>Outgoing Speakers</h2>
+            
+            <button ui-sref="Admin.NewOutgoing" class="picker-button">New Schedule</button>
+        
+        </div>
+        
+    </div>
+    
+</div>

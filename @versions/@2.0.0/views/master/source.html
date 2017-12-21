@@ -1,0 +1,26 @@
+<div class="container">
+   
+    <div class="source-material">
+      
+        <div class="save-container">
+
+            <!-- Save Button -->
+            <button class="save" ui-sref="Master.Source-Add">
+                <img src="img/icons/Add%20Filled-50.png" />
+            </button>
+
+        </div>
+       
+        <li ng-repeat="src in sourceMaterial" ui-sref="Master.Source-Edit({id:src.id})">
+
+            <p>{{src.mm_sdate | utcConvert | date}} - {{src.mm_edate | utcConvert | date}}</p>
+
+            <img class="icon" src="img/icons/Delete%20File-50.png" />
+
+            <img class="icon" src="img/icons/Edit%20Filled-50.png" />
+
+        </li>
+       
+    </div>
+    
+</div>

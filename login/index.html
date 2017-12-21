@@ -1,0 +1,80 @@
+<html>
+    <head>
+        
+        <!-- Base URL | Change to your URL -->
+        <script>
+            
+            //Get Base Url
+            var baseurl = window.location.origin + window.location.pathname;
+
+            //Generate Base URl
+            document.write('<base href="' + baseurl + '" />');
+            
+
+        </script>
+        
+        <!-- Viewport -->
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+
+        <!-- WebApp Name -->
+        <meta name="apple-mobile-web-app-title" content="MyKHInfo">
+        
+        <!-- Site Title -->
+        <title>Kingdom Hall Info | Login</title>
+
+        <!-- Apple Touch Icon -->
+        <link rel="apple-touch-icon" href="../img/icons/HomeScreenIcons/KH-Home.png">
+        
+        <!-- Stylesheets -->
+        <link rel="stylesheet" type="text/css" href="../css/style.css">
+        
+        <!-- JQuery -->
+        <script src="../node_modules/jquery/dist/jquery.min.js"></script>
+        
+        <!-- PrintThisJS -->
+        <script src="../node_modules/print-this/printThis.js"></script>
+        
+        <!-- Moments JS -->
+        <script src="../node_modules/moment/min/moment.min.js"></script>
+
+        <!-- Fix To Top -->
+        <script src="../node_modules/fixto/dist/fixto.min.js"></script>
+        
+        <!-- Fix To Top -->
+        <script src="../node_modules/sticky-kit/dist/sticky-kit.min.js"></script>
+        
+        <!-- Angular -->
+        <script src="../node_modules/angular/angular.min.js"></script>
+        
+        <!-- UI-Router | Core -->
+        <script src="../node_modules/@uirouter/core/_bundles/ui-router-core.min.js"></script>
+        <script src="../node_modules/@uirouter/angularjs/release/ui-router-angularjs.min.js"></script>
+        
+        <!-- Session Storage -->
+        <script src="../node_modules/angular-local-storage/dist/angular-local-storage.min.js"></script>
+
+        <!-- KHI | Core -->
+        <script src="../scripts/core/custom/khi-core.js"></script>
+        
+        <!-- KHI | Entry Point -->
+        <script src="../shared/application/login/app.js"></script>
+
+        <!-- KHI | Factories -->
+        <script src="../shared/logic/factories/kAuth.js"></script>
+
+        <!-- KHI | Controller -->
+        <script src="../shared/application/login/controller.js"></script>
+        
+    </head>
+    <body ng-app="khi">
+        
+        <!-- Page -->
+        <div class="page">
+            
+            <!-- Main View -->
+            <ui-view name="main"></ui-view>
+            
+        </div>
+        
+    </body>
+</html>

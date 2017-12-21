@@ -1,0 +1,75 @@
+<!-- Sidebar -->
+<div class="sidebar">
+
+    <div class="sidebar-container">
+
+        <div class="logo">
+
+            <!-- Link Icon -->
+            <div class="icon">
+
+                <img src="img/khinfo2-white-Small.png" />
+
+            </div>
+
+        </div>
+
+        <div class="link">
+
+            <!-- Dash Link -->
+            <a ui-sref="Admin.Dashboard" ui-sref-active="active" class="links" ng-click="toggleSidebar()">
+                <li>
+
+                    <!-- Icon -->
+                    <div class="icon"><img src="img/icons/icons8-Home-64.png" /></div>
+
+                    <!-- Link Title -->
+                    Dashboard
+
+                </li>
+            </a>
+            
+            <!-- Dash Link -->
+            <a ui-sref="Admin.All" ui-sref-active="active" class="links" ng-click="toggleSidebar()">
+                <li>
+
+                    <!-- Icon -->
+                    <div class="icon"><img src="img/icons/icons8-Bill-64.png" /></div>
+
+                    <!-- Link Title -->
+                    Schedules
+
+                </li>
+            </a>
+
+            <!-- Life And Ministry -->
+            <a ui-sref="Admin.New" ui-sref-active="active" class="links" ng-click="toggleSidebar()">
+                <li>
+
+                    <!-- Icon -->
+                    <div class="icon"><img src="img/icons/icons8-Bill-64.png" /></div>
+
+                    <!-- Link Title -->
+                    New
+
+                </li>
+            </a>
+
+            <!-- Logout Link -->
+            <a ui-sref="Login" ng-click="toggleSidebar(); logout('admin')" class="links">
+                <li>
+
+                    <!-- Icon -->
+                    <div class="icon"><img src="img/icons/icons8-SignOut-64.png" /></div>
+
+                    <!-- Link Title -->
+                    Logout
+
+                </li>
+            </a>
+
+        </div>
+
+    </div>
+
+</div>

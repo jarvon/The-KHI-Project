@@ -1,0 +1,1056 @@
+<div class="container">
+
+    <!-- Life and Ministry Schedule -->
+    <div ng-if="type === 'life'" class="schedule" ng-repeat="sch in schedules">
+        
+        <div id="{{ sch.id }}" class="life-ministry">
+            
+            <div class="sch-name">
+                
+                Our Christian Life and Ministry
+                
+            </div>
+            
+            <!-- Date -->
+            <div fix-to="{mind:'.header', zIndex: 98}" class="head">
+                <h1 class="date"><b>Our Christian Life and Ministry</b> {{ sch.sDate | utcConvert | date }} - {{ sch.eDate | utcConvert | date }}
+                    <div class="print-button" ng-click="printSch(sch.id)">
+                        <img src="img/icons/Print%20Filled-50.png" />
+                    </div>
+                </h1>
+            </div>
+            
+            <!-- Weekly Bible Reading -->
+            <h1 class="wbr-header">{{ sch.wbr }}</h1>
+            
+            <!-- Clear Fix Container -->
+            <div class="clearFix">
+                
+                <!-- Assignment Left -->
+                <div class="left">
+                    <li class="assignments">
+                        Song: <b> #{{ sch.song1 }} </b> | Prayer
+                    </li>
+                </div>
+                
+                <!-- Assignment Left -->
+                <div class="left">
+                    <li class="assignments">
+                        Opening Comments | Chairman: <br class="small-br"><b>{{ sch.chairmanN }}</b> (3 min. or less)
+                    </li>
+                </div>
+                
+                <!-- Time Right -->
+                <div class="right">
+                    <li class="end-time">END | {{ sch.ocTime | dateToDate | date: 'h:mm' }} </li>
+                </div>
+                
+            </div><!-- Clear Fix -->
+            
+            <!-- Treasures Title -->
+            <h1 class="title1">Treasures From God's Word</h1>
+            
+            <!-- Clear Fix Container -->
+            <div class="clearFix">
+                
+                <div class="left">
+                    <li class="assignments">"{{ sch.talk1 }}": <br class="small-br"><b>{{ sch.talk1N }}</b> (10 min.)</li>
+                </div>
+                
+                <div class="right">
+                    <li class="end-time">{{ sch.t1Time | dateToDate | date: 'h:mm' }}</li>
+                </div>
+                
+                <div class="left">
+                    <li class="assignments">Digging For Spiritual Gems: <br class="small-br"><b>{{ sch.talk2N }}</b> (8 min.)</li>
+                </div>
+
+                <div class="right">
+                    <li class="end-time">{{ sch.digTime | dateToDate | date: 'h:mm' }}</li>
+                </div>
+
+                <div class="left">
+                    <li class="assignments">Bible Reading - {{ sch.reading }}: <br class="small-br"><b>{{ sch.readingN }}</b> <b class="Counsel">({{ sch.cp1 }})</b> (4 min. or less)</li>
+                </div>
+
+                <div class="right">
+                    <li class="end-time">{{ sch.brTime | dateToDate | date: 'h:mm' }}</li>
+                </div>
+                
+            </div><!-- Clear Fix -->
+            
+            <!-- Apply Yourself Title -->
+            <h1 class="title2">Apply Yourself To The Field Ministry</h1>
+            
+            <!-- Clear Fix Container -->
+            <div class="clearFix">
+                
+                <div ng-if="sch.video == 1" class="video">
+                    
+                    <div class="left">
+                        <li class="assignments">
+                            Sample Videos: <b>{{ sch.videoN }}</b>
+                            <hr>
+                        </li>
+                    </div>
+                    
+                </div>
+                
+                <div ng-if="sch.video == 0" class="no-video">
+                    
+                    <div class="left">
+                        <li class="assignments block-it">{{ sch.initialCall || 'Initial Call' }}: 
+                            <b>{{ sch.initialN1 || 'Coming Soon' }} / {{ sch.initialN2 || 'Coming Soon' }}</b>
+                            <b class="Cousel">({{ sch.cp2 }})</b><br class="small-br">
+                             (2 min. or less) <br>
+                            <i>{{ sch.initialM }}</i>hf
+                        </li>
+                    </div>
+
+                    <div class="left">
+                        <li class="assignments block-it">{{ sch.returnVisit || 'Return Visit' }}: 
+                            <b>{{ sch.returnN1 || 'Coming Soon' }} / {{ sch.returnN2 || 'Coming Soon' }}</b>
+                            <b class="Cousel">({{ sch.cp3 }})</b><br class="small-br">
+                             (4 min. or less) <br>
+                            <i>{{ sch.returnM }}</i>
+                        </li>
+                    </div>
+
+                    <div class="left">
+                        <li ng-if="sch.bibleStudy != 'Talk'" class="assignments block-it">{{ sch.bibleStudy || 'Bible Study' }}:
+                            <b>{{ sch.bibleN1 || 'Coming Soon' }} / {{ sch.bibleN2 || 'Coming Soon' }}</b>
+                            <b class="Cousel">({{ sch.cp4 }})</b><br class="small-br">
+                             (6 min. or less) <br>
+                            <i>{{ sch.bibleM }}</i>
+                        </li>
+                        <li ng-if="sch.bibleStudy == 'Talk'" class="assignments block-it">{{ sch.bibleStudy || 'Talk' }}:
+                            <b>{{ sch.bibleN1 || 'Coming Soon' }}</b>
+                            <b class="Cousel">({{ sch.cp4 }})</b><br class="small-br">
+                             (6 min. or less) <br>
+                            <i>{{ sch.bibleM }}</i>
+                        </li>
+                    </div>
+                    
+                </div>
+                
+                <div class="right">
+                    <li class="end-time">{{ sch.ayTime | dateToDate | date: 'h:mm' }}</li>
+                </div>
+                
+            </div><!-- Clear Fix -->
+            
+            <!-- Living Title -->
+            <h1 class="title3">Living As Christians</h1>
+            
+            <!-- Clear Fix Container -->
+            <div class="clearFix">
+                
+                <div class="left">
+                    <li class="assignments">Song: <b>#{{ sch.song2 }}</b></li>
+                </div>
+                
+                <div ng-if="sch.ep == 1" class="left">
+                    <li class="assignments">{{ sch.talk3 || 'Talk' }}:<br class="small-br">
+                        <b>{{ sch.talk3N || 'Coming Soon' }}</b>
+                        - ({{sch.lnActTime}} min.)
+                    </li>
+                </div>
+                
+                <div ng-if="sch.ep == 1" class="right">
+                    <li class="end-time">{{ sch.lnTime | dateToDate | date: 'h:mm' }}</li>
+                </div>
+                
+                <div ng-if="sch.talk4 !== ''" class="left">
+                    <li class="assignments">{{ sch.talk4 }}:<br class="small-br">
+                    <b>{{ sch.talk4N || 'Coming Soon' }}</b> ({{sch.t3ActTime}} min.)</li>
+                </div>
+
+                <div ng-if="sch.talk4 !== ''" class="right">
+                    <li class="end-time">{{ sch.t3Time | dateToDate | date: 'h:mm' }}</li>
+                </div>
+
+                <div class="left">
+                    <li class="assignments">Bible Study: <b>{{ sch.cbsN || 'Coming Soon' }}</b> (30 min.) <br>Reader: <b>{{ sch.cbsR || 'Coming Soon' }}</b>
+                        <br><i>{{ sch.cbs }}</i>
+                    </li>
+                </div>
+
+                <div class="right">
+                    <li class="end-time">{{ sch.bsTime | dateToDate | date: 'h:mm' }}</li>
+                </div>
+
+                <div class="left">
+                    <li class="assignments">Review Followed by Preview of Next Week:<br class="small-br">
+                    <b>{{ sch.chairmanN }}</b> - (3 min.)</li>
+                </div>
+
+                <div class="right">
+                    <li class="end-time">{{ sch.rvTime | dateToDate | date: 'h:mm' }}</li>
+                </div>
+
+                <div class="left">
+                    <li class="assignments">Song <b>#{{ sch.song3 }}</b> | Prayer</li>
+                </div>
+                
+            </div>
+
+            <!-- QR Code -->
+            <div class="qr-code">
+                <img src="https://api.qrserver.com/v1/create-qr-code/?size=60x60&ecc=Q&data=http://mykhinfo.com/#!/schedule/single/life/{{ sch.id }}" alt="schedule/single/life/{{ sch.id }}" />
+            </div>
+            
+            <div class="for-latest">
+                
+                Visit <b>MyKHInfo.com</b> <br> Printed | {{todayDate | date: "MMM d, yyyy"}}
+                
+            </div>
+            
+        </div> <!-- Schedule -->
+        
+    </div>
+    
+    <!-- Stage and Attendants Schedule -->
+    <div ng-if="type === 'attend'" class="schedule" ng-repeat="sch in schedules">
+        
+        <!-- Attendants Schedule Template -->
+        <div id="{{ sch.id }}" class="attendants">
+           
+           <div class="sch-name">
+                
+                Our Stage and Attendants
+                
+            </div>
+            
+            <div fix-to="{mind:'.header', zIndex: 98}" class="head">
+                
+                <h1 class="month">{{sch.sDate | utcConvert | date: 'MMMM yyyy'}}
+                    <div class="print-button" ng-click="printSch(sch.id)">
+                        <img src="img/icons/Print%20Filled-50.png" />
+                    </div>
+                </h1>
+
+            </div>
+        
+            <div class="contain">
+                
+                <!-- Assignment - 1 - Done -->
+                <div class="assignment">
+
+                    <div class="mDate">
+
+                        <!-- Mid Month Date -->
+                        {{ sch.mDate1 | utcConvert | date: 'EEEE MMM d' }}
+
+                    </div>
+
+                    <!-- Attendants -->
+                    <div class="attend">
+
+                        <b>Attendants:</b>
+
+                        <!-- Attendants From DB -->
+                        {{ sch.atten1}} / {{ sch.atten2 }}
+
+                    </div>
+
+                    <!-- Mics -->
+                    <div class="mics">
+
+                        <b>Mics:</b>
+
+                        <!-- Button + Dropdown -->
+                        {{ sch.mic1 }} / {{ sch.mic2 }} / {{ sch.mic3 }}
+
+                    </div>
+
+                    <!-- Platform -->
+                    <div class="plat">
+
+                        <b>Platform:</b>
+
+                        <!-- Button + Dropdown -->
+                        {{ sch.plat1 }}
+
+                    </div>
+
+                    <!-- Sound -->
+                    <div class="sound">
+
+                        <b>Sound:</b>
+
+                        <!-- Button + Dropdown -->
+                        {{ sch.sound1 }}
+
+                    </div>
+
+                    <!-- Meeting Notes -->
+
+                    <div class="notes">
+
+                        <b>Reminders: </b>{{ sch.note1 }}
+
+                    </div>
+
+                </div> <!-- Assignment -->
+
+                <!-- Assignment - 2 - Done -->
+                <div class="assignment">
+
+                    <div class="mDate">
+
+                        <!-- Mid Month Date -->
+                        {{ sch.mDate2 | utcConvert | date: 'EEEE MMM d' }}
+
+                    </div>
+
+                    <!-- Attendants -->
+                    <div class="attend">
+
+                        <b>Attendants:</b>
+
+                        <!-- Attendants From DB -->
+                        {{ sch.atten3}} / {{ sch.atten4 }}
+
+                    </div>
+
+                    <!-- Mics -->
+                    <div class="mics">
+
+                        <b>Mics:</b>
+
+                        <!-- Button + Dropdown -->
+                        {{ sch.mic4 }} / {{ sch.mic5 }} / {{ sch.mic6 }}
+
+                    </div>
+
+                    <!-- Platform -->
+                    <div class="plat">
+
+                        <b>Platform:</b>
+
+                        <!-- Button + Dropdown -->
+                        {{ sch.plat2 }}
+
+                    </div>
+
+                    <!-- Sound -->
+                    <div class="sound">
+
+                        <b>Sound:</b>
+
+                        <!-- Button + Dropdown -->
+                        {{ sch.sound2 }}
+
+                    </div>
+
+                    <!-- Meeting Notes -->
+
+                    <div class="notes">
+
+                        <b>Reminders: </b>{{ sch.note2 }}
+
+                    </div>
+
+                </div> <!-- Assignment -->
+
+                <!-- Assignment - 3 - Done -->
+                <div class="assignment">
+
+                    <div class="mDate">
+
+                        <!-- Mid Month Date -->
+                        {{ sch.mDate3 | utcConvert | date: 'EEEE MMM d' }}
+
+                    </div>
+
+                    <!-- Attendants -->
+                    <div class="attend">
+
+                        <b>Attendants:</b>
+
+                        <!-- Attendants From DB -->
+                        {{ sch.atten5}} / {{ sch.atten6 }}
+
+                    </div>
+
+                    <!-- Mics -->
+                    <div class="mics">
+
+                        <b>Mics:</b>
+
+                        <!-- Button + Dropdown -->
+                        {{ sch.mic7 }} / {{ sch.mic8 }} / {{ sch.mic9 }}
+
+                    </div>
+
+                    <!-- Platform -->
+                    <div class="plat">
+
+                        <b>Platform:</b>
+
+                        <!-- Button + Dropdown -->
+                        {{ sch.plat3 }}
+
+                    </div>
+
+                    <!-- Sound -->
+                    <div class="sound">
+
+                        <b>Sound:</b>
+
+                        <!-- Button + Dropdown -->
+                        {{ sch.sound3 }}
+
+                    </div>
+
+                    <!-- Meeting Notes -->
+
+                    <div class="notes">
+
+                        <b>Reminders: </b>{{ sch.note3 }}
+
+                    </div>
+
+                </div> <!-- Assignment -->
+
+                <!-- Assignment - 4 - Done -->
+                <div class="assignment">
+
+                    <div class="mDate">
+
+                        <!-- Mid Month Date -->
+                        {{ sch.mDate4 | utcConvert | date: 'EEEE MMM d' }}
+
+                    </div>
+
+                    <!-- Attendants -->
+                    <div class="attend">
+
+                        <b>Attendants:</b>
+
+                        <!-- Attendants From DB -->
+                        {{ sch.atten7}} / {{ sch.atten8 }}
+
+                    </div>
+
+                    <!-- Mics -->
+                    <div class="mics">
+
+                        <b>Mics:</b>
+
+                        <!-- Button + Dropdown -->
+                        {{ sch.mic10 }} / {{ sch.mic11 }} / {{ sch.mic12 }}
+
+                    </div>
+
+                    <!-- Platform -->
+                    <div class="plat">
+
+                        <b>Platform:</b>
+
+                        <!-- Button + Dropdown -->
+                        {{ sch.plat4 }}
+
+                    </div>
+
+                    <!-- Sound -->
+                    <div class="sound">
+
+                        <b>Sound:</b>
+
+                        <!-- Button + Dropdown -->
+                        {{ sch.sound4 }}
+
+                    </div>
+
+                    <!-- Meeting Notes -->
+
+                    <div class="notes">
+
+                        <b>Reminders: </b>{{ sch.note4 }}
+
+                    </div>
+
+                </div> <!-- Assignment -->
+
+                <!-- Assignment - 5 - Done -->
+                <div class="assignment">
+
+                    <div class="mDate">
+
+                        <!-- Mid Month Date -->
+                        {{ sch.mDate5 | utcConvert | date: 'EEEE MMM d' }}
+
+                    </div>
+
+                    <!-- Attendants -->
+                    <div class="attend">
+
+                        <b>Attendants:</b>
+
+                        <!-- Attendants From DB -->
+                        {{ sch.atten9}} / {{ sch.atten10 }}
+
+                    </div>
+
+                    <!-- Mics -->
+                    <div class="mics">
+
+                        <b>Mics:</b>
+
+                        <!-- Button + Dropdown -->
+                        {{ sch.mic13 }} / {{ sch.mic14 }} / {{ sch.mic15 }}
+
+                    </div>
+
+                    <!-- Platform -->
+                    <div class="plat">
+
+                        <b>Platform:</b>
+
+                        <!-- Button + Dropdown -->
+                        {{ sch.plat5 }}
+
+                    </div>
+
+                    <!-- Sound -->
+                    <div class="sound">
+
+                        <b>Sound:</b>
+
+                        <!-- Button + Dropdown -->
+                        {{ sch.sound5 }}
+
+                    </div>
+
+                    <!-- Meeting Notes -->
+
+                    <div class="notes">
+
+                        <b>Reminders: </b>{{ sch.note5 }}
+
+                    </div>
+
+                </div> <!-- Assignment -->
+
+                <!-- Assignment - 6 - Done -->
+                <div class="assignment">
+
+                    <div class="mDate">
+
+                        <!-- Mid Month Date -->
+                        {{ sch.mDate6 | utcConvert | date: 'EEEE MMM d' }}
+
+                    </div>
+
+                    <!-- Attendants -->
+                    <div class="attend">
+
+                        <b>Attendants:</b>
+
+                        <!-- Attendants From DB -->
+                        {{ sch.atten11}} / {{ sch.atten12 }}
+
+                    </div>
+
+                    <!-- Mics -->
+                    <div class="mics">
+
+                        <b>Mics:</b>
+
+                        <!-- Button + Dropdown -->
+                        {{ sch.mic16 }} / {{ sch.mic17 }} / {{ sch.mic18 }}
+
+                    </div>
+
+                    <!-- Platform -->
+                    <div class="plat">
+
+                        <b>Platform:</b>
+
+                        <!-- Button + Dropdown -->
+                        {{ sch.plat6 }}
+
+                    </div>
+
+                    <!-- Sound -->
+                    <div class="sound">
+
+                        <b>Sound:</b>
+
+                        <!-- Button + Dropdown -->
+                        {{ sch.sound6 }}
+
+                    </div>
+
+                    <!-- Meeting Notes -->
+
+                    <div class="notes">
+
+                        <b>Reminders: </b>{{ sch.note6 }}
+
+                    </div>
+
+                </div> <!-- Assignment -->
+
+                <!-- Assignment - 7 - Done -->
+                <div class="assignment">
+
+                    <div class="mDate">
+
+                        <!-- Mid Month Date -->
+                        {{ sch.mDate7 | utcConvert | date: 'EEEE MMM d' }}
+
+                    </div>
+
+                    <!-- Attendants -->
+                    <div class="attend">
+
+                        <b>Attendants:</b>
+
+                        <!-- Attendants From DB -->
+                        {{ sch.atten13}} / {{ sch.atten14 }}
+
+                    </div>
+
+                    <!-- Mics -->
+                    <div class="mics">
+
+                        <b>Mics:</b>
+
+                        <!-- Button + Dropdown -->
+                        {{ sch.mic19 }} / {{ sch.mic20 }} / {{ sch.mic21 }}
+
+                    </div>
+
+                    <!-- Platform -->
+                    <div class="plat">
+
+                        <b>Platform:</b>
+
+                        <!-- Button + Dropdown -->
+                        {{ sch.plat7 }}
+
+                    </div>
+
+                    <!-- Sound -->
+                    <div class="sound">
+
+                        <b>Sound:</b>
+
+                        <!-- Button + Dropdown -->
+                        {{ sch.sound7 }}
+
+                    </div>
+
+                    <!-- Meeting Notes -->
+
+                    <div class="notes">
+
+                        <b>Reminders: </b>{{ sch.note7 }}
+
+                    </div>
+
+                </div> <!-- Assignment -->
+
+                <!-- Assignment - 8 - Done -->
+                <div class="assignment">
+
+                    <div class="mDate">
+
+                        <!-- Mid Month Date -->
+                        {{ sch.mDate8 | utcConvert | date: 'EEEE MMM d' }}
+
+                    </div>
+
+                    <!-- Attendants -->
+                    <div class="attend">
+
+                        <b>Attendants:</b>
+
+                        <!-- Attendants From DB -->
+                        {{ sch.atten15}} / {{ sch.atten16 }}
+
+                    </div>
+
+                    <!-- Mics -->
+                    <div class="mics">
+
+                        <b>Mics:</b>
+
+                        <!-- Button + Dropdown -->
+                        {{ sch.mic19 }} / {{ sch.mic20 }} / {{ sch.mic21 }}
+
+                    </div>
+
+                    <!-- Platform -->
+                    <div class="plat">
+
+                        <b>Platform:</b>
+
+                        <!-- Button + Dropdown -->
+                        {{ sch.plat8 }}
+
+                    </div>
+
+                    <!-- Sound -->
+                    <div class="sound">
+
+                        <b>Sound:</b>
+
+                        <!-- Button + Dropdown -->
+                        {{ sch.sound8 }}
+
+                    </div>
+
+                    <!-- Meeting Notes -->
+
+                    <div class="notes">
+
+                        <b>Reminders: </b>{{ sch.note8 }}
+
+                    </div>
+
+                </div> <!-- Assignment -->
+
+                <!-- Assignment - 9 - Done | Shown If Needed -->
+                <div ng-if="sch.atten17" class="assignment">
+
+                    <!-- Mid Date -->
+                    <div class="mDate">
+
+                        <!-- Mid Month Date -->
+                        {{ sch.mDate9 | utcConvert | date: 'EEEE MMM d' }}
+
+                    </div>
+
+                    <!-- Attendants -->
+                    <div class="attend">
+
+                        <b>Attendants:</b>
+
+                        <!-- Attendants From DB -->
+                        {{ sch.atten17}} / {{ sch.atten18 }}
+
+                    </div>
+
+                    <!-- Mics -->
+                    <div class="mics">
+
+                        <b>Mics:</b>
+
+                        <!-- Button + Dropdown -->
+                        {{ sch.mic25 }} / {{ sch.mic26 }} / {{ sch.mic27 }}
+
+                    </div>
+
+                    <!-- Platform -->
+                    <div class="plat">
+
+                        <b>Platform:</b>
+
+                        <!-- Button + Dropdown -->
+                        {{ sch.plat9 }}
+
+                    </div>
+
+                    <!-- Sound -->
+                    <div class="sound">
+
+                        <b>Sound:</b>
+
+                        <!-- Button + Dropdown -->
+                        {{ sch.sound9 }}
+
+                    </div>
+
+                    <!-- Meeting Notes -->
+
+                    <div class="notes">
+
+                        <b>Reminders: </b>{{ sch.note9 }}
+
+                    </div>
+
+                </div> <!-- Assignment -->
+
+                <!-- Assignment - 10 - Done | Shown If Needed -->
+                <div ng-if="sch.atten19" class="assignment">
+
+                    <!-- Mid Date -->
+                    <div class="mDate">
+
+                        <!-- Mid Month Date -->
+                        {{ sch.mDate10 | utcConvert | date: 'EEEE MMM d' }}
+
+                    </div>
+
+                    <!-- Attendants -->
+                    <div class="attend">
+
+                        <b>Attendants:</b>
+
+                        <!-- Attendants From DB -->
+                        {{ sch.atten19}} / {{ sch.atten20 }}
+
+                    </div>
+
+                    <!-- Mics -->
+                    <div class="mics">
+
+                        <b>Mics:</b>
+
+                        <!-- Button + Dropdown -->
+                        {{ sch.mic28 }} / {{ sch.mic29 }} / {{ sch.mic30 }}
+
+                    </div>
+
+                    <!-- Platform -->
+                    <div class="plat">
+
+                        <b>Platform:</b>
+
+                        <!-- Button + Dropdown -->
+                        {{ sch.plat10 }}
+
+                    </div>
+
+                    <!-- Sound -->
+                    <div class="sound">
+
+                        <b>Sound:</b>
+
+                        <!-- Button + Dropdown -->
+                        {{ sch.sound10 }}
+
+                    </div>
+                    <hr>
+
+                    <!-- Meeting Notes -->
+                    <div class="notes">
+
+                        <b>Reminders: </b>{{ sch.note10 }}
+
+                    </div>
+
+            </div> <!-- Assignment -->
+                
+            </div><!-- Contain -->
+            
+            <div class="for-latest">
+                
+                For the latest updates, please visit www.khinfo.us<br>
+                Printed on {{todayDate | date: "M/d/yyyy"}}
+                
+            </div>
+            
+        </div>
+        
+    </div>
+    
+    <!-- Incoming Schedule -->
+    <div ng-if="type === 'incoming'" class="schedule" ng-repeat="sch in schedules">
+        
+        <div id="{{sch.id}}" class="incoming">
+        
+            <div class="sch-name">
+
+                Our Incoming Speakers
+           
+            </div>
+            
+            <div fix-to="{mind:'.header', zIndex: 98}" class="head">
+                
+                <h1 class="month">{{sch.sDate | utcConvert | date: 'MMMM yyyy'}}
+                    <div class="print-button" ng-click="printSch(sch.id)">
+                        <img src="img/icons/Print%20Filled-50.png">
+                    </div>
+                </h1>
+                
+            </div>
+            
+            <div class="assignment">
+                
+                <b class="large">{{sch.mDate1 | utcConvert | date: 'EEEE MMM d'}}</b>
+                
+                <b class="medium">Talk: #{{sch.talkNum1}} - {{sch.talk1}}</b>
+                
+                <b class="medium">Speaker: {{sch.brother1}}</b>
+                
+                <b class="medium">Congregation: {{sch.cong1}}</b>
+
+                <b class="medium">Hospitality: {{sch.host1}}</b>
+                
+            </div>
+            
+            <div class="assignment">
+                
+                <b class="large">{{sch.mDate2 | utcConvert | date: 'EEEE MMM d'}}</b>
+                
+                <b class="medium">Talk: #{{sch.talkNum2}} - {{sch.talk2}}</b>
+                
+                <b class="medium">Speaker: {{sch.brother2}}</b>
+                
+                <b class="medium">Congregation: {{sch.cong2}}</b>
+
+                <b class="medium">Hospitality: {{sch.host2}}</b>
+                
+            </div>
+            
+            <div class="assignment">
+                
+                <b class="large">{{sch.mDate3 | utcConvert | date: 'EEEE MMM d'}}</b>
+                
+                <b class="medium">Talk: #{{sch.talkNum3}} - {{sch.talk3}}</b>
+                
+                <b class="medium">Speaker: {{sch.brother3}}</b>
+                
+                <b class="medium">Congregation: {{sch.cong3}}</b>
+
+                <b class="medium">Hospitality: {{sch.host3}}</b>
+                
+            </div>
+            
+            <div class="assignment">
+                
+                <b class="large">{{sch.mDate4 | utcConvert | date: 'EEEE MMM d'}}</b>
+                
+                <b class="medium">Talk: #{{sch.talkNum4}} - {{sch.talk4}}</b>
+                
+                <b class="medium">Speaker: {{sch.brother4}}</b>
+                
+                <b class="medium">Congregation: {{sch.cong4}}</b>
+
+                <b class="medium">Hospitality: {{sch.host4}}</b>
+                
+            </div>
+            
+            <div ng-if="sch.brother5 || sch.cong5" class="assignment">
+                
+                <b class="large">{{sch.mDate5 | utcConvert | date: 'EEEE MMM d'}}</b>
+                
+                <b class="medium">Talk: #{{sch.talkNum5}} - {{sch.talk5}}</b>
+                
+                <b class="medium">Speaker: {{sch.brother5}}</b>
+                
+                <b class="medium">Congregation: {{sch.cong5}}</b>
+
+                <b class="medium">Hospitality: {{sch.host5}}</b>
+                
+            </div>
+        
+            <div class="for-latest">
+                
+                For the latest updates, please visit www.khinfo.us<br>
+                Printed on {{todayDate | date: "M/d/yyyy"}}
+
+            </div>
+        
+        </div>
+        
+    </div>
+
+    <!-- Incoming Schedule -->
+    <div ng-if="type === 'outgoing'" class="schedule" ng-repeat="sch in schedules">
+        
+        <div id="{{sch.id}}" class="incoming">
+        
+            <div class="sch-name">
+
+                Our Outgoing Speakers
+           
+            </div>
+            
+            <!-- .head: Dummy CSS Class -->
+            <div fix-to="{mind:'.header', zIndex: 98}" class="head">
+                
+                <h1 class="month">{{sch.sDate | utcConvert | date: 'MMMM yyyy'}}
+                    <div class="print-button" ng-click="printSch(sch.id)">
+                        <img src="img/icons/Print%20Filled-50.png">
+                    </div>
+                </h1>
+                
+            </div>
+            
+            <div class="assignment">
+                
+                <b class="large">{{sch.mDate1 | utcConvert | date: 'EEEE MMM d'}}</b>
+                
+                <b class="medium">Talk: #{{sch.talkNum1}} - {{sch.talk1}}</b>
+                
+                <b class="medium">Speaker: {{sch.brother1}}</b>
+                
+                <b class="medium">Congregation: {{sch.congregation1}}</b>
+
+                <b class="medium">Time: {{sch.time1 | utcConvert | date : "shortTime"}}</b>
+                
+            </div>
+            
+            <div class="assignment">
+                
+                <b class="large">{{sch.mDate2 | utcConvert | date: 'EEEE MMM d'}}</b>
+                
+                <b class="medium">Talk: #{{sch.talkNum2}} - {{sch.talk2}}</b>
+                
+                <b class="medium">Speaker: {{sch.brother2}}</b>
+                
+                <b class="medium">Congregation: {{sch.congregation2}}</b>
+
+                <b class="medium">Time: {{sch.time2 | utcConvert | date : "shortTime"}}</b>
+                
+            </div>
+            
+            <div class="assignment">
+                
+                <b class="large">{{sch.mDate3 | utcConvert | date: 'EEEE MMM d'}}</b>
+                
+                <b class="medium">Talk: #{{sch.talkNum3}} - {{sch.talk3}}</b>
+                
+                <b class="medium">Speaker: {{sch.brother3}}</b>
+                
+                <b class="medium">Congregation: {{sch.congregation3}}</b>
+
+                <b class="medium">Time: {{sch.time3 | utcConvert | date : "shortTime"}}</b>
+                
+            </div>
+            
+            <div class="assignment">
+                
+                <b class="large">{{sch.mDate4 | utcConvert | date: 'EEEE MMM d'}}</b>
+                
+                <b class="medium">Talk: #{{sch.talkNum4}} - {{sch.talk4}}</b>
+                
+                <b class="medium">Speaker: {{sch.brother4}}</b>
+                
+                <b class="medium">Congregation: {{sch.congregation4}}</b>
+
+                <b class="medium">Time: {{sch.time4 | utcConvert | date : "shortTime"}}</b>
+                
+            </div>
+            
+            <div ng-if="sch.brother5 || sch.cong5" class="assignment">
+                
+                <b class="large">{{sch.mDate5 | utcConvert | date: 'EEEE MMM d'}}</b>
+                
+                <b class="medium">Talk: #{{sch.talkNum5}} - {{sch.talk5}}</b>
+                
+                <b class="medium">Speaker: {{sch.brother5}}</b>
+                
+                <b class="medium">Congregation: {{sch.congregation5}}</b>
+
+                <b class="medium">Time: {{sch.time5 | utcConvert | date : "shortTime"}}</b>
+                
+            </div>
+        
+            <div class="for-latest">
+                
+                For the latest updates, please visit www.khinfo.us<br>
+                Printed on {{todayDate | date: "M/d/yyyy"}}
+
+            </div>
+        
+        </div>
+        
+    </div>
+    
+</div>

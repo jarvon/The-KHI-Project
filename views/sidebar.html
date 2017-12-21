@@ -1,0 +1,90 @@
+<!-- Sidebar -->
+<div class="sidebar">
+
+    <div class="sidebar-container">
+
+        <div class="logo">
+
+            <!-- Link Icon -->
+            <div class="icon">
+
+                <img src="img/logo/2018/Logo-2018-500x500-Blue.png" />
+
+            </div>
+
+        </div>
+
+        <div class="link">
+
+            <!-- Dash Link -->
+            <a ui-sref="Guest.Dashboard" class="links" ui-sref-active="active" ng-click="toggleSidebar()">
+                <li>
+                    <div class="icon"><img src="img/icons/icons8-Home-64.png" /></div>
+                    Dashboard
+                </li>
+            </a>
+
+            <!-- Life And Ministry -->
+            <a ui-sref="Guest.List({type: 'life', id: 0})" ui-sref-active="active" class="links" ng-click="toggleSidebar()">
+                <li>
+
+                    <!-- Main Icon -->
+                    <div class="icon"><img src="img/icons/icons8-Bill-64.png" /></div>
+
+                    <!-- Link Title -->
+                    Life And Ministry
+
+                </li>
+            </a>
+            
+            <!-- Life And Ministry -->
+            <a ui-sref="Guest.List({type: 'attend', id: 0})" ui-sref-active="active" class="links" ng-click="toggleSidebar()">
+                <li>
+
+                    <!-- Main Icon -->
+                    <div class="icon"><img src="img/icons/icons8-Bill-64.png" /></div>
+
+                    <!-- Link Title -->
+                    Stage & Attendants
+
+                </li>
+            </a>
+            
+            <!-- Life And Ministry -->
+            <a ui-sref="Guest.List({type: 'incoming', id: 0})" ui-sref-active="active" class="links" ng-click="toggleSidebar()">
+                <li>
+
+                    <!-- Main Icon -->
+                    <div class="icon"><img src="img/icons/icons8-Bill-64.png" /></div>
+
+                    <!-- Link Title -->
+                    Incoming Speakers
+                    
+                </li>
+            </a>
+
+            <!-- Life And Ministry -->
+            <a ui-sref="Guest.List({type: 'outgoing', id: 0})" ui-sref-active="active" class="links" ng-click="toggleSidebar()">
+                <li>
+                    <div class="icon"><img src="img/icons/icons8-Bill-64.png" /></div>
+                    Outgoing Speakers
+                </li>
+            </a>
+
+            <!-- Logout Link -->
+            <a href="login" ng-click="toggleSidebar(); logout('guest')" class="links">
+                <li>
+                    <div class="icon"><img src="img/icons/icons8-SignOut-64.png" /></div>
+                    Logout
+                </li>
+            </a>
+
+        </div>
+
+    </div>
+
+    <div class="version">
+        Version 0.5.0
+    </div>
+
+</div>
