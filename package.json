@@ -8,14 +8,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/jarvon/MyKHInfo-Project.git"
+    "url": "git+https://github.com/jarvon/The-KHI-Project.git"
   },
   "author": "JarVon Designs",
   "license": "GPL-3.0",
   "bugs": {
-    "url": "https://github.com/jarvon/MyKHInfo-Project/issues"
+    "url": "https://github.com/jarvon/The-KHI-Project/issues"
   },
-  "homepage": "https://github.com/jarvon/MyKHInfo-Project#readme",
+  "homepage": "https://github.com/jarvon/The-KHI-Project#readme",
   "dependencies": {
     "@uirouter/angularjs": "^1.0.10",
     "angular": "^1.6.7",
