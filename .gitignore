@@ -1,8 +1,5 @@
 # Ignore Versions Folder
 /@versions
 
-# Ignore API Folder
-/kapi-v1
-
 # Ignore Node_Modules
 /node_modules
