@@ -1,1 +1,5 @@
+# Ignore Versions Folder
 /@versions
+
+# Ignore API Folder
+/kapi-v1
