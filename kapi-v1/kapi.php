@@ -1,17 +1,11 @@
 <?php
 
-use PHPMailer\PHPMailer\PHPMailer;
-use PHPMailer\PHPMailer\Exception;
-
-require '../vendor/autoload.php';
-
-date_default_timezone_set('Etc/UTC');
-
 //-------------------------
 //Allow External Access
 //-------------------------
 
-header('Access-Control-Allow-Origin: *');
+//Only To Main Website
+header('Access-Control-Allow-Origin: http://mykhinfo.com');
 
 //-------------------------
 //Database
@@ -134,31 +128,8 @@ if(!empty($_GET['sourceId'])){
 //-------------------------
 if($task === 'login'){
     
-    $loginQuery = $db->query("SELECT * FROM users WHERE pin = '$pin'");
-    
-    $loggedIn = $loginQuery->num_rows;
-    
-    if($loggedIn == true){
-        
-        $token = mt_rand(10000, 99999);
-        
-        //$tokenQuery = $db->query("INSERT INTO `tokens` VALUES ('','$token')");
-        
-        $queryCheck = $db->affected_rows;
-        
-        if($queryCheck > 0) {
-            
-            //Return True | Successful
-            echo $token;
-            
-        }
-        
-    } else {
-        
-        //Return False | Denied
-        echo 'false';
-        
-    }
+    //Include Task File
+    include 'task/login.task.php';
     
 };
 
@@ -167,21 +138,7 @@ if($task === 'login'){
 //-------------------------
 if($task === 'loginAdmin'){
     
-    $loginQuery = $db->query("SELECT * FROM users WHERE email = '$email' AND password = '$password'");
-    
-    $loggedIn = $loginQuery->num_rows;
-    
-    if($loggedIn == true){
-        
-        //Return True | Successful
-        echo 'true';
-        
-    } else {
-        
-        //Return False | Denied
-        echo 'false';
-        
-    }
+    include 'task/login.admin.task.php';
     
 };
 
