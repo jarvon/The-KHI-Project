@@ -1290,7 +1290,7 @@ khi.controller('schedule-picker', function($scope, $http, $state, localStorageSe
 });
 
 //New Life And Ministy
-khi.controller('lm-sch-change', function($scope, $state, localStorageService, $http, $log, schedule) {
+khi.controller('lm-sch-change', function($scope, $state, localStorageService, $http, $log, $filter, schedule) {
 
     console.log($state.current.name);
 
@@ -1327,6 +1327,68 @@ khi.controller('lm-sch-change', function($scope, $state, localStorageService, $h
             $scope.sourceMaterial = source.data[0];
 
         });
+
+        //Get Schedules | Life And Ministry
+        schedule.getAll($scope.pin, 'life').then(function(sch) {
+
+            //console.log(sch.data);
+            $scope.schLife = sch.data;
+
+        });
+
+        //Get Schedules | Life And Ministry
+        schedule.getAll($scope.pin, 'attend').then(function(sch) {
+
+            //console.log(sch.data);
+            $scope.schAttend = sch.data;
+
+        });
+
+        //Get Schedules | Life And Ministry
+        schedule.getAll($scope.pin, 'incoming').then(function(sch) {
+
+            //console.log(sch.data);
+            $scope.schIncoming = sch.data;
+
+        });
+
+        //Get Schedules | Life And Ministry
+        schedule.getAll($scope.pin, 'outgoing').then(function(sch) {
+
+            //console.log(sch.data);
+            $scope.schOutgoing = sch.data;
+
+        });
+
+    }
+
+    $('.lead-schedule').hover(function(){
+
+        $('body').toggleClass('no-scroll');
+
+    });
+
+    $scope.showSchedulePanel = function(index, type){
+
+        $scope.schTypeForPanel = undefined;
+
+        $('.show-schedule').addClass('toggle');
+
+        if(type === 'life'){
+
+            //Change Schedule Type
+            $scope.schTypeForPanel = 'life';
+
+            //Add Schedule Data To Var
+            $scope.schData = $scope.schLife[index];
+
+        }
+
+    }
+
+    $scope.hideSchedulePanel = function(){
+
+        $('.show-schedule').removeClass('toggle');
 
     }
 
@@ -1715,6 +1777,13 @@ khi.controller('lm-sch-change', function($scope, $state, localStorageService, $h
             $scope.savedConfirm = true;
 
         });
+
+    }
+
+    $scope.toggleLeadSchedulePanel = function(){
+
+        $('.container').toggleClass('toggle');
+        $('.lead-schedule').toggleClass('toggle');
 
     }
 

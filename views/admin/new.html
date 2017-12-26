@@ -9,6 +9,11 @@
             <button ng-click="save()" class="save">
                 <img src="img/icons/Save-50.png">
             </button>
+
+            <!-- Toggle Panel -->
+            <button ng-click="toggleLeadSchedulePanel()">
+                <img src="img/icons/icons8-divider-50.png" />
+            </button>
             
         </div>
         
@@ -1447,6 +1452,247 @@
             
         </div>
         
+    </div>
+
+</div>
+
+<div class="lead-schedule">
+
+    <div class="search-bar">
+
+        <input type="text" ng-model="leadSearch" placeholder="Search Friends">
+
+    </div>
+
+    <div class="results">
+
+        <h1>Life And Ministry</h1>
+        <div class="schedule" ng-repeat="life in schLife | orderBy: 'sDate'" ng-click="showSchedulePanel($index, 'life')">
+
+            {{ life.sDate | utcConvert | date }}
+
+        </div>
+
+        <h1>Attendants</h1>
+        <div class="schedule" ng-repeat="attend in schAttend | orderBy: 'sDate'">
+
+            {{ attend.sDate | utcConvert | date }}
+
+        </div>
+
+        <h1>Incoming Speakers</h1>
+        <div class="schedule" ng-repeat="incoming in schIncoming | orderBy: 'sDate'">
+
+            {{ incoming.sDate | utcConvert | date }}
+
+        </div>
+
+        <h1>Outgoing Speakers</h1>
+        <div class="schedule" ng-repeat="outgoing in schOutgoing | orderBy: 'sDate'">
+
+            {{ outgoing.sDate | utcConvert | date }}
+
+        </div>
+
+    </div>
+
+    <div class="show-schedule">
+
+        <div class="SVheader">
+            <img src="img/icons/icons8-Expand Arrow-64.png" alt="" ng-click="hideSchedulePanel()">
+            <div class="title" ng-if="schTypeForPanel == 'life'">Our Christian Life and Ministry</div>
+        </div>
+
+        <div class="sch-view">
+
+            <!-- Life and Ministry Schedule -->
+            <div ng-if="schTypeForPanel === 'life'" class="schedule">
+                
+                <div id="{{ sch.id }}" class="life-ministry">
+
+                    <!-- Date -->
+                    <h1 class="date"><b>Our Christian Life and Ministry</b> {{ schData.sDate | utcConvert | date }} - {{ schData.eDate | utcConvert | date }}</h1>
+                    
+                    <!-- Weekly Bible Reading -->
+                    <h1 class="wbr-header">{{ schData.wbr }}</h1>
+                    
+                    <!-- Clear Fix Container -->
+                    <div class="clearFix">
+                        
+                        <!-- Assignment Left -->
+                        <div class="left">
+                            <li class="assignments">
+                                Song: <b> #{{ schData.song1 }} </b> | Prayer
+                            </li>
+                        </div>
+                        
+                        <!-- Assignment Left -->
+                        <div class="left">
+                            <li class="assignments">
+                                Opening Comments | Chairman: <br class="small-br"><b>{{ schData.chairmanN }}</b> (3 min. or less)
+                            </li>
+                        </div>
+                        
+                        <!-- Time Right -->
+                        <div class="right">
+                            <li class="end-time">END | {{ schData.ocTime | dateToDate | date: 'h:mm' }} </li>
+                        </div>
+                        
+                    </div><!-- Clear Fix -->
+                    
+                    <!-- Treasures Title -->
+                    <h1 class="title1">Treasures From God's Word</h1>
+                    
+                    <!-- Clear Fix Container -->
+                    <div class="clearFix">
+                        
+                        <div class="left">
+                            <li class="assignments">"{{ schData.talk1 }}": <br class="small-br"><b>{{ schData.talk1N }}</b> (10 min.)</li>
+                        </div>
+                        
+                        <div class="right">
+                            <li class="end-time">{{ schData.t1Time | dateToDate | date: 'h:mm' }}</li>
+                        </div>
+                        
+                        <div class="left">
+                            <li class="assignments">Digging For Spiritual Gems: <br class="small-br"><b>{{ schData.talk2N }}</b> (8 min.)</li>
+                        </div>
+        
+                        <div class="right">
+                            <li class="end-time">{{ schData.digTime | dateToDate | date: 'h:mm' }}</li>
+                        </div>
+        
+                        <div class="left">
+                            <li class="assignments">Bible Reading - {{ schData.reading }}: <br class="small-br"><b>{{ schData.readingN }}</b> <b class="Counsel">({{ schData.cp1 }})</b> (4 min. or less)</li>
+                        </div>
+        
+                        <div class="right">
+                            <li class="end-time">{{ schData.brTime | dateToDate | date: 'h:mm' }}</li>
+                        </div>
+                        
+                    </div><!-- Clear Fix -->
+                    
+                    <!-- Apply Yourself Title -->
+                    <h1 class="title2">Apply Yourself To The Field Ministry</h1>
+                    
+                    <!-- Clear Fix Container -->
+                    <div class="clearFix">
+                        
+                        <div ng-if="schData.video == 1" class="video">
+                            
+                            <div class="left">
+                                <li class="assignments">
+                                    Sample Videos: <b>{{ schData.videoN }}</b>
+                                    <hr>
+                                </li>
+                            </div>
+                            
+                        </div>
+                        
+                        <div ng-if="schData.video == 0" class="no-video">
+                            
+                            <div class="left">
+                                <li class="assignments block-it">{{ schData.initialCall || 'Initial Call' }}: 
+                                    <b>{{ schData.initialN1 || 'Coming Soon' }} / {{ schData.initialN2 || 'Coming Soon' }}</b>
+                                    <b class="Cousel">({{ schData.cp2 }})</b><br class="small-br">
+                                    (2 min. or less) <br>
+                                    <i>{{ schData.initialM }}</i>hf
+                                </li>
+                            </div>
+        
+                            <div class="left">
+                                <li class="assignments block-it">{{ schData.returnVisit || 'Return Visit' }}: 
+                                    <b>{{ schData.returnN1 || 'Coming Soon' }} / {{ schData.returnN2 || 'Coming Soon' }}</b>
+                                    <b class="Cousel">({{ schData.cp3 }})</b><br class="small-br">
+                                    (4 min. or less) <br>
+                                    <i>{{ schData.returnM }}</i>
+                                </li>
+                            </div>
+        
+                            <div class="left">
+                                <li ng-if="schData.bibleStudy != 'Talk'" class="assignments block-it">{{ schData.bibleStudy || 'Bible Study' }}:
+                                    <b>{{ schData.bibleN1 || 'Coming Soon' }} / {{ schData.bibleN2 || 'Coming Soon' }}</b>
+                                    <b class="Cousel">({{ schData.cp4 }})</b><br class="small-br">
+                                    (6 min. or less) <br>
+                                    <i>{{ schData.bibleM }}</i>
+                                </li>
+                                <li ng-if="schData.bibleStudy == 'Talk'" class="assignments block-it">{{ schData.bibleStudy || 'Talk' }}:
+                                    <b>{{ schData.bibleN1 || 'Coming Soon' }}</b>
+                                    <b class="Cousel">({{ schData.cp4 }})</b><br class="small-br">
+                                    (6 min. or less) <br>
+                                    <i>{{ schData.bibleM }}</i>
+                                </li>
+                            </div>
+                            
+                        </div>
+                        
+                        <div class="right">
+                            <li class="end-time">{{ schData.ayTime | dateToDate | date: 'h:mm' }}</li>
+                        </div>
+                        
+                    </div><!-- Clear Fix -->
+                    
+                    <!-- Living Title -->
+                    <h1 class="title3">Living As Christians</h1>
+                    
+                    <!-- Clear Fix Container -->
+                    <div class="clearFix">
+                        
+                        <div class="left">
+                            <li class="assignments">Song: <b>#{{ schData.song2 }}</b></li>
+                        </div>
+                        
+                        <div ng-if="schData.ep == 1" class="left">
+                            <li class="assignments">{{ schData.talk3 || 'Talk' }}:<br class="small-br">
+                                <b>{{ schData.talk3N || 'Coming Soon' }}</b>
+                                - ({{ schData.lnActTime }} min.)
+                            </li>
+                        </div>
+                        
+                        <div ng-if="schData.ep == 1" class="right">
+                            <li class="end-time">{{ schData.lnTime | dateToDate | date: 'h:mm' }}</li>
+                        </div>
+                        
+                        <div ng-if="schData.talk4 !== ''" class="left">
+                            <li class="assignments">{{ schData.talk4 }}:<br class="small-br">
+                            <b>{{ schData.talk4N || 'Coming Soon' }}</b> ({{schData.t3ActTime}} min.)</li>
+                        </div>
+        
+                        <div ng-if="schData.talk4 !== ''" class="right">
+                            <li class="end-time">{{ schData.t3Time | dateToDate | date: 'h:mm' }}</li>
+                        </div>
+        
+                        <div class="left">
+                            <li class="assignments">Bible Study: <b>{{ schData.cbsN || 'Coming Soon' }}</b> (30 min.) <br>Reader: <b>{{ schData.cbsR || 'Coming Soon' }}</b>
+                                <br><i>{{ schData.cbs }}</i>
+                            </li>
+                        </div>
+        
+                        <div class="right">
+                            <li class="end-time">{{ schData.bsTime | dateToDate | date: 'h:mm' }}</li>
+                        </div>
+        
+                        <div class="left">
+                            <li class="assignments">Review Followed by Preview of Next Week:<br class="small-br">
+                            <b>{{ schData.chairmanN }}</b> - (3 min.)</li>
+                        </div>
+        
+                        <div class="right">
+                            <li class="end-time">{{ schData.rvTime | dateToDate | date: 'h:mm' }}</li>
+                        </div>
+        
+                        <div class="left">
+                            <li class="assignments">Song <b>#{{ schData.song3 }}</b> | Prayer</li>
+                        </div>
+                        
+                    </div>
+                    
+                </div> <!-- Schedule -->
+                
+            </div>
+
+        </div>
+
     </div>
 
 </div>

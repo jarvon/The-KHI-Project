@@ -32,6 +32,10 @@ body {
     background-color: $bodyClr;
     font-family: 'Heebo', sans-serif;
     font-weight: 400;
+
+    &.no-scroll {
+        overflow: hidden !important;
+    }
 }
 
 a {
@@ -345,7 +349,26 @@ li {
     //Container
     .container {
         max-width: 1000px;
+        height: 100%;
         margin: 50px auto;
+
+        &.toggle {
+            width: calc(60% - 10px);
+            margin: 0;
+
+            .schedule {
+                box-shadow: none;
+                margin-top: 10px;
+                margin-bottom: 50px;
+
+                .life-ministry {
+
+                    .sch-name {
+                        font-size: 30px;
+                    }
+                }
+            }
+        }
         
         .schedule {
             opacity: 1;
@@ -366,10 +389,19 @@ li {
             }
             
             .save-container {
-                top: 60px;
-                right: 10px;
+                opacity: .5;
+                top: 50px;
+                right: 0px;
                 position: fixed;
-                width: 60px;
+                width: 50px;
+                padding: 10px;
+                transform: scale(0.8);
+                transition: all .2s ease-in-out;
+                z-index: 50;
+
+                &:hover {
+                    opacity: 1;
+                }
                 
                 button {
                     height: 50px;
@@ -379,26 +411,35 @@ li {
                     color: white;
                     font-size: 17px;
                     text-align: center;
-                    background-color: $mainClr;
-                    border-radius: 60px;
+                    background-color: $jwLightBlue;
+                    border-radius: 5px;
                     margin-bottom: 10px;
-                    box-shadow: 0px 0px 5px $mainClr;
+                    box-shadow: 0px 0px 2.5px grey;
                     outline: none;
                     overflow: hidden;
+                    transition: all .2s ease-in-out;
+                    -webkit-transition: all .2s ease-in-out;
                     
                     img {
                         height: 100%;
                         width: auto;
                     }
+
+                    &:active {
+                        transform: scale(0.9);
+                        -webkit-transform: scale(0.9);
+                    }
                 }
                 
                 button.save:hover {
-                    box-shadow: 0px 0px 10px green;
+                    box-shadow: 0px 0px 4px grey;
                 }
                 
                 button.delete:hover {
                     box-shadow: 0px 0px 10px red;
                 }
+
+
             }
             
             .life-ministry {
@@ -646,6 +687,7 @@ li {
                     box-shadow: none;
                     transition: all .4s ease-in-out;
                     overflow: hidden;
+                    z-index: 50;
                     
                     ::-webkit-scrollbar { 
                         display: none; 
@@ -1230,6 +1272,355 @@ li {
         }
         
     }// .Container
+
+    //Lead Schedule
+    .lead-schedule {
+        top: 50px;
+        right: 0;
+        position: fixed;
+        height: calc(100% - 50px);
+        width: 40%;
+        background-color: rgb(235, 235, 235);
+        z-index: 49;
+        transform: translateX(100%);
+
+        .search-bar {
+            height: 70px;
+            width: calc(100% - 60px);
+
+            input {
+                font-size: 15px;
+                padding: 15px;
+                margin: 10px;
+                width: calc(100% - 20px);
+                border: none;
+                border-radius: 2.5px;
+                border: 2px solid $logoLightGrey;
+                outline: none;
+            }
+        }
+
+        .results {
+            height: calc(100% - 70px);
+            width: calc(100% - 80px);
+            margin-left: 10px;
+            overflow-x: hidden;
+            overflow-y: auto;
+
+            h1 {
+                margin: 0px;
+                font-size: 22px;
+                padding: 5px;
+                margin: 5px 0;
+                color: $mainGrey;
+                border-bottom: 2px solid $jwLightBlue;
+            }
+
+            .schedule {
+                border-bottom: 2px solid $jwLightBlue;
+                margin: 10px 0 10px 20px;
+                padding: 5px;
+                color: $mainGrey;
+                border-radius: 2.5px;
+                transition: all .2s ease-in-out;
+
+                &:active {
+                    transform: scale(0.98);
+                }
+            }
+        }
+
+        .show-schedule {
+            top: 0;
+            position: fixed;
+            transform: translateX(100%);
+            height: 100%;
+            width: 100%;
+            background-color: white;
+            transition: all .5s ease-in-out;
+            z-index: 50;
+
+            .SVheader {
+                height: 50px;
+                background-color: rgb(224, 224, 224);
+                box-shadow: 0px 0px 2px grey;
+                overflow: auto;
+
+                img {
+                    float: left;
+                    height: 20px;
+                    width: auto;
+                    transform: rotate(90deg) scale(1.0);
+                    padding: 5px;
+                    margin: 10px;
+                    background-color: $mainGrey;
+                    border-radius: 5px;
+
+                    &:active {
+                        transform: rotate(90deg) scale(0.95);
+                    }
+                }
+
+                .title {
+                    float: left;
+                    width: calc(100% - 50px);
+                    color: $mainGrey;
+                    padding: 15px 0;
+                }
+            }
+
+            .sch-view {
+                top: 50px;
+                position: absolute;
+                height: calc(100% - 50px);
+                width: 100%;
+                overflow: auto;
+
+                .life-ministry {
+                    padding: 10px;
+                    
+                    input,
+                    select{
+                        width: 250px;
+                        margin: 0;
+                        border: 2px solid $mainClr;
+                        padding: 8px;
+                        transition: all .2s ease-in-out;
+                        outline: none;
+                        background-color: white;
+                        
+                        &.small {
+                            width: 80px;
+                        }
+                    }
+                    
+                    button {
+                        //border: 2px solid $mainClr;
+                        border: none;
+                        border: 2px solid $secondaryClr;
+                        background-color: $secondaryClr;
+                        color: white;
+                        width: 250px;
+                        margin: 0;
+                        padding: 8px 0px;
+                        transition: all .2s ease-in-out;
+                        outline: none;
+                        z-index: 10;
+                    }
+                    
+                    input:hover,
+                    select:hover,
+                    button:hover {
+                        box-shadow: 0px 0px 10px $mainClr;
+                    }
+                    
+                    button.clicked {
+                        box-shadow: 2px 2px 5px $mainClr;
+                    }
+                    
+                    h1 {
+                        margin: 0;
+                        font-weight: 400;
+                        font-size: 17px;
+                    }
+                    
+                    h1.title2 select {
+                        float: right;
+                        right: 100%;
+                        width: 100px;
+                        padding: 2.5px;
+                        margin: 0;
+                        outline: none;
+                        overflow: auto;
+                    }
+                    
+                    h4 {
+                        margin: 10px 0px;
+                        font-weight: 400;
+                    }
+                    
+                    h4.light-grey-border-bottom {
+                        border-bottom: 4px solid lightgrey;
+                    }
+                    
+                    h4.treasures {
+                        border-bottom: 4px solid #5a6a70;
+                    }
+                    
+                    h4.apply {
+                        border-bottom: 4px solid #c18626;
+                    }
+                    
+                    h4.living {
+                        border-bottom: 4px solid #961526;
+                    }
+                    
+                    .sch-name {
+                        text-align: left;
+                        font-size: 30px;
+                        font-weight: 600;
+                    }
+                    
+                    .print-button {
+                        float: right;
+                        height: 25px;
+                        width: 25px;
+                        overflow: hidden;
+                        padding: 5px;
+                        transition: all .2s ease-in-out;
+                        
+                        img {
+                            height: 25px;
+                            width: auto;
+                            transition: all .2s ease-in-out;
+                        }
+    
+                        &:active {
+                            opacity: 0.8;
+                            transform: scale(0.9);
+                        }
+                        
+                    }
+                    
+                    .assignments {
+                        font-size: 16px;
+                        padding: 0 0 5px 5px;
+                        margin: 0 0 10px 10px;
+                        border-left: 5px solid lightgrey;
+                        border-bottom: 2px solid lightgrey;
+    
+                        &.block-it {
+                            min-height: auto;
+                        }
+    
+                        &.wbr {
+                            border-color: lightgrey;
+                        }
+    
+                        &.treasures {
+                            border-color: #5a6a70;
+                        }
+                        
+                        &.apply {
+                            border-color: #c18626;
+                        }
+                        
+                        &.living {
+                            border-color: #961526;
+                        }
+                        
+                        .small-br {
+                            display: block;
+                        }
+                    }
+                    
+                    .no-pad-top {
+                        padding-top: 0px !important;
+                    }
+                    
+                    .no-pad-bottom {
+                        padding-bottom: 0px !important;
+                    }
+    
+                    .assignments b.right {
+                       float: right;
+                    }
+    
+                    .assignments:empty {
+                        display: none;
+                    }
+                    
+                    .date {
+                        margin: 0;
+                        font-size: 25px;
+                        color: rgb(50,50,50);
+                        text-align: left;
+                        padding: 5px;
+                        background-color: white;
+    
+                        b {
+                            display: none;
+                        }
+                    }
+                    
+                    .date-print {
+                        display: none;
+                    }
+                    
+                    .end-time {
+                        padding: 5px 10px;
+                        font-weight: 600;
+                        list-style: none;
+                        text-align: right;
+                        font-size: 14px;
+                    }
+                    
+                    .left {
+                        display: block;
+                        float: left;
+                        width: calc(100% - 100px);
+                    }
+                    
+                    .right {
+                        display: block;
+                        float: right;
+                        width: 100px;
+                    }
+                    
+                    .title1 {
+                        padding: 5px;
+                        color: white;
+                        background-color: #5a6a70;
+                        margin-bottom: 10px;
+                    }
+                    
+                    .title2 {
+                        padding: 5px;
+                        color: white;
+                        background-color: #c18626;
+                        margin-bottom: 10px;
+                    }
+                    
+                    .title3 {
+                        padding: 5px;
+                        color: white;
+                        background-color: #961526;
+                        margin-bottom: 10px;
+                    }
+                    
+                    .wbr-header {
+                        top: 0;
+                        padding: 5px;
+                        font-size: inherit;
+                        color: grey;
+                        background-color: lightgray;
+                        margin-bottom: 10px;
+                    }
+    
+                    .qr-code {
+                        display: none;
+                        height: 60px;
+                        width: 60px;
+    
+                        img {
+                            height: 60px;
+                            width: auto;
+                        }
+                    }
+                    
+                }// .LifeAndMinistry
+            }
+
+            &.toggle {
+                transform: translateX(0) scale(1.0);
+                animation: showSchedule .8s ease-in-out;
+            }
+        }
+
+        &.toggle {
+            transform: translateX(0);
+        }
+    }
     
     //Schedule Picker
     .sch-picker-container {
@@ -1539,7 +1930,6 @@ li {
         z-index: 100;
         background-color: rgb(248, 248, 248);
         background-size: cover;
-        animation: fadeIn .5s;
         
         .login-form {
             height: auto;
@@ -1550,6 +1940,16 @@ li {
             background-color: $logoLightGrey;
             overflow: auto;
             box-shadow: 0px 0px 20px -4px grey;
+
+            &:before {
+                content: '';
+                opacity: .9;
+                left: 0;
+                position: absolute;
+                height: 180px;
+                width: 100vw;
+                background-color: $jwLightBlue;
+            }
             
             .logo {
                 position: relative;
@@ -2575,4 +2975,26 @@ li {
         -webkit-transform: translateY(0);
     }
 
+}
+
+@keyframes showSchedule {
+
+    0% {
+        transform: translateX(100%) scale(0.9);
+        box-shadow: 0px 0px 5px grey;
+        border-radius: 10px;
+    }
+
+    70% {
+        transform: translateX(0) scale(0.9);
+        box-shadow: 0px 0px 5px grey;
+        border-radius: 10px;        
+    }
+
+    100% {
+        transform: translateX(0) scale(1.0);
+        box-shadow: none;
+        border-radius: 0px;        
+    }
+    
 }
