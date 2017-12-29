@@ -4,7 +4,7 @@
     height: 50px;
     width: 100%;
     background-color: $lightWhite;
-    box-shadow: 0px 0px 10px -3px black;
+    border-bottom: 1px solid rgb(210, 210, 210);
     z-index: 99;
     overflow: hidden;
     
@@ -16,6 +16,7 @@
         padding: 0px 10px;
         overflow: hidden;
         z-index: 101;
+        background-color: $lightWhite;
         -webkit-tap-highlight-color: rgba(0,0,0,0);
         -webkit-transition: transform .3s ease-in-out;
         transition: transform .3s ease-in-out;
@@ -80,10 +81,6 @@
     .ham-right ~ .header-content {
         opacity: 0;
     }
-
-    .ham-right ~ .ico-links {
-        opacity: 0;
-    }
     
     .header-content {
         transform: translateY(0);
@@ -107,7 +104,8 @@
     }
 
     .ico-links {
-        position: absolute;
+        opacity: 1;
+        position: fixed;
         display: block;
         right: 0;
         height: 50px;
@@ -115,7 +113,7 @@
         -webkit-transition: all .3s ease-in-out;
         transition: all .3s ease-in-out;
         overflow: auto;
-        z-index: 98;
+        z-index: 100;
 
         .ico-container {
             display: block;
@@ -139,6 +137,10 @@
                 }
             }
 
+        }
+
+        &.toggle {
+            opacity: 0;
         }
     }
     

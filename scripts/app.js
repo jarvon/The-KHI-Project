@@ -852,6 +852,78 @@ khi.controller('header', function($rootScope, $scope, $state, kAuth, $stateParam
 
 });
 
+khi.controller('search-bar', ['$scope', function($scope){
+
+    $('#searchBAR').focus(function(){
+
+        $(".main-searchbar").addClass('toggle').delay(400).queue(function(){
+
+            $(".main-searchbar .search").removeClass('show')
+            $(".main-searchbar .cancel").removeClass('hide');
+            $(".main-searchbar .search").addClass('hide')
+            $(".main-searchbar .cancel").addClass('show');
+
+            //DeQueue
+            $(this).dequeue();
+
+        });
+
+        $('.ico-links').addClass('toggle');
+
+        $('.searchBAR-container').addClass('toggle');
+
+    });
+
+    $(".main-searchbar .cancel").click(function(){
+
+        console.log($scope.toSearch);
+
+        if($scope.toSearch == '' || $scope.toSearch == undefined){
+
+            $scope.$apply(function(){
+                $scope.toSearch = undefined;
+            });
+
+            $(".main-searchbar").removeClass('toggle').delay(400).queue(function(){
+
+                console.log('Yes');
+
+                $(".main-searchbar .search").removeClass('hide');
+                $(".main-searchbar .search").addClass('show');
+                $(".main-searchbar .cancel").removeClass('show');
+                $(".main-searchbar .cancel").addClass('hide');
+
+                //DeQueue
+                $(this).dequeue();
+    
+            });
+
+            $('.ico-links').removeClass('toggle');
+
+            $('.searchBAR-container').removeClass('toggle');
+
+        } else {
+
+            if(!$(".main-searchbar").hasClass('toggle')){
+
+                $scope.$apply(function(){
+                    $scope.toSearch = undefined;
+                });
+
+            }
+
+            $(".main-searchbar").removeClass('toggle');
+
+            $('.ico-links').removeClass('toggle');
+
+            $('.searchBAR-container').removeClass('toggle');
+
+        }
+
+    });
+
+}]);
+
 //Home - Controller
 khi.controller('dashboard', function($scope, $http, localStorageService, schedule) {
 

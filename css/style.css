@@ -13,7 +13,7 @@ Version: 3.0
   height: 50px;
   width: 100%;
   background-color: #f2f1ef;
-  box-shadow: 0px 0px 10px -3px black;
+  border-bottom: 1px solid #d2d2d2;
   z-index: 99;
   overflow: hidden; }
   .header .ham {
@@ -24,6 +24,7 @@ Version: 3.0
     padding: 0px 10px;
     overflow: hidden;
     z-index: 101;
+    background-color: #f2f1ef;
     -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
     -webkit-transition: transform .3s ease-in-out;
     transition: transform .3s ease-in-out; }
@@ -67,8 +68,6 @@ Version: 3.0
       margin: 23px 0px 0px 0px; }
   .header .ham-right ~ .header-content {
     opacity: 0; }
-  .header .ham-right ~ .ico-links {
-    opacity: 0; }
   .header .header-content {
     transform: translateY(0);
     top: 0;
@@ -87,7 +86,8 @@ Version: 3.0
       color: #65605e;
       padding: 6.2px 0px; }
   .header .ico-links {
-    position: absolute;
+    opacity: 1;
+    position: fixed;
     display: block;
     right: 0;
     height: 50px;
@@ -95,7 +95,7 @@ Version: 3.0
     -webkit-transition: all .3s ease-in-out;
     transition: all .3s ease-in-out;
     overflow: auto;
-    z-index: 98; }
+    z-index: 100; }
     .header .ico-links .ico-container {
       display: block;
       float: left;
@@ -113,6 +113,74 @@ Version: 3.0
           float: left;
           height: inherit;
           width: auto; }
+    .header .ico-links.toggle {
+      opacity: 0; }
+
+.main-searchbar {
+  position: fixed;
+  top: 0;
+  right: 100px;
+  height: 50px;
+  width: 290px;
+  z-index: 101;
+  transition: all .35s ease-in-out;
+  -webkit-transition: all .35s ease-in-out;
+  overflow: hidden; }
+  .main-searchbar input {
+    position: absolute;
+    right: 0;
+    font-size: 15px;
+    width: 100%;
+    padding: 10px 35px 10px 10px;
+    margin: 5px 0;
+    color: #65605e;
+    border: 1px solid #c8c8c8;
+    border-radius: 2.5px;
+    outline: none;
+    transition: all .5s ease-in-out; }
+  .main-searchbar .button {
+    position: absolute;
+    height: 20px;
+    width: 20px;
+    top: 15px;
+    right: 12.5px;
+    border: none;
+    transition: all .3s ease-in-out;
+    -webkit-transition: all .3s ease-in-out; }
+    .main-searchbar .button img {
+      display: block;
+      height: 20px;
+      width: auto; }
+      .main-searchbar .button img:active {
+        transform: scale(0.9); }
+    .main-searchbar .button.search {
+      transform: translateX(0); }
+    .main-searchbar .button.cancel {
+      transform: translateX(35px); }
+    .main-searchbar .button.hide {
+      transform: translateX(35px); }
+    .main-searchbar .button.show {
+      transform: translateX(0); }
+  .main-searchbar.toggle {
+    transform: translateX(95px); }
+  .main-searchbar.toggle-down {
+    transform: translateX(95px) translateY(20px); }
+
+.searchBAR-container {
+  position: fixed;
+  top: 50px;
+  right: 0;
+  transform: translateX(100%);
+  height: calc(100% - 50px);
+  width: calc(300px - 10px);
+  background-color: #f2f1ef;
+  padding: 5px;
+  transition: all .35s ease-in-out;
+  -webkit-transition: all .35s ease-in-out;
+  border-left: 1px solid #d2d2d2;
+  z-index: 100; }
+  .searchBAR-container.toggle {
+    transform: translateX(0); }
 
 .sidebar {
   top: 0;
@@ -449,7 +517,7 @@ li {
       margin: 0px 0px 100px 0px;
       padding: 0 5px;
       background-color: white;
-      box-shadow: 0px 0px 5px -2px black; }
+      border: 1px solid #d2d2d2; }
       .page .container .schedule.no-animate {
         animation: none;
         -webkit-animation: none; }

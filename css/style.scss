@@ -16,6 +16,9 @@ Version: 3.0
 //Header - @import
 @import 'partials/header';
 
+//Main Search - @import
+@import 'partials/main-search';
+
 //Sidebar - @import
 @import 'partials/sidebar';
 
@@ -381,7 +384,7 @@ li {
 
             //Effects
             background-color: white;
-            box-shadow: 0px 0px 5px -2px black;
+            border: 1px solid rgb(210, 210, 210);
 
             &.no-animate {
                 animation: none;

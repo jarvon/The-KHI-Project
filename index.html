@@ -91,18 +91,46 @@
 
                 <div class="ico-container">
                     <div class="ico" ui-sref="Login" ng-click="logout('guest')">
-                        <img src="img/icons/icons8-SignOut-64.png" alt="">
+                        <img src="img/icons/icons8-sign-out-50.png" alt="">
                     </div>
                 </div>
 
                 <div class="ico-container">
                     <div class="ico" ng-click="refresh()">
-                        <img src="img/icons/icons8-Synchronize-64.png" alt="">
+                        <img src="img/icons/icons8-available-updates-50.png" alt="">
                     </div>
                 </div>
 
             </div>
             
+        </div>
+
+        <div ng-controller="search-bar">
+
+            <!-- Main Search -->
+            <div class="main-searchbar">
+
+                <!-- Search -->
+                <input id="searchBAR" ng-model="toSearch" type="text" placeholder="Search">
+
+                <!-- Search Button -->
+                <div class="button search">
+                    <img src="img/icons/icons8-search-50.png" alt="">
+                </div>
+
+                <!-- Search Button -->
+                <div class="button cancel">
+                    <img src="img/icons/icons8-close-window-50.png" alt="">
+                </div>
+
+            </div>
+
+            <div class="searchBAR-container">
+
+                {{ toSearch }}
+
+            </div>
+
         </div>
         
         <!-- Page -->
