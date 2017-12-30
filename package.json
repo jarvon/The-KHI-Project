@@ -1,6 +1,6 @@
 {
   "name": "mykhinfo",
-  "version": "3.0.0",
+  "version": "0.8.0",
   "description": "Scheduling software for the many Kingdom Hall.",
   "main": "scripts/index.js",
   "scripts": {

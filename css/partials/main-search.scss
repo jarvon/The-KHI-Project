@@ -32,6 +32,7 @@
         border: none;
         transition: all .3s ease-in-out;
         -webkit-transition: all .3s ease-in-out;
+        background-color: white;
 
         img {
             display: block;
@@ -86,6 +87,12 @@
     -webkit-transition: all .35s ease-in-out;
     border-left: 1px solid rgb(210, 210, 210);
     z-index: 100;
+
+    li {
+        border-left: 5px solid lightgrey;
+        border-bottom: 2px solid lightgrey;
+        padding: 5px;
+    }
 
     &.toggle {
         transform: translateX(0);
