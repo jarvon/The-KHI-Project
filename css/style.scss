@@ -910,6 +910,17 @@ li {
                             }
                         }
                     }
+
+                    .qr-code {
+                        display: none;
+                        height: 60px;
+                        width: 60px;
+    
+                        img {
+                            height: 60px;
+                            width: auto;
+                        }
+                    }
                     
                     .dropdown-slideup {
                         transform: translateY(0);

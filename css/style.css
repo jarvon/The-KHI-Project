@@ -879,6 +879,13 @@ li {
                 width: auto; }
             .page .container .schedule .attendants .dropdown .list li p {
               margin: 11px 0; }
+        .page .container .schedule .attendants .qr-code {
+          display: none;
+          height: 60px;
+          width: 60px; }
+          .page .container .schedule .attendants .qr-code img {
+            height: 60px;
+            width: auto; }
         .page .container .schedule .attendants .dropdown-slideup {
           transform: translateY(0);
           height: 350px;
