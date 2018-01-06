@@ -511,7 +511,7 @@ khi.filter('utcConvert', function() {
 
     return function(input) {
 
-        var date = new Date(moment(input));
+        var date = moment(input).format('MMM Do, YYYY');
 
         return date;
 
@@ -523,9 +523,7 @@ khi.filter('momentParseTime', function(){
 
     return function(input){
 
-        console.log(input);
-
-        var time = moment(input, "h:mm").format("h:mm");
+        var time = new Date(moment(input));
 
         return time;
 
@@ -707,25 +705,52 @@ khi.factory('schedule', function($http, localStorageService) {
 //Header Controller
 khi.controller('header', function($rootScope, $scope, $state, kAuth, $stateParams, $filter) {
 
-    //Init Ham && Sidebar Classes
-    //Angualar Jquery Lite
-    angular.element('.ham').removeClass('ham-right');
-    angular.element('.sidebar').removeClass('sidebar-open');
+    $(window).scroll(function(){
 
+        var winHeight = $(window).width();
+        var scroll = $(window).scrollTop();
 
-    //Toggle Sidebar | Function
-    $scope.toggleSidebar = function(val) {
+        if(winHeight > 600){
 
-        var pageWidth = $(window).width();
+            if(scroll <= $('.banner-container').height()){
+
+                $('.welcome').css({
+                    transform: 'translateY('+ scroll / 4 +'px)'
+                });
+                
+            }
+
+        }
+
+    });
+
+    //Open Sidebar | Function
+    $scope.openSidebar = function() {
 
         //Angualar Jquery Lite
-        angular.element('body').toggleClass('toggle');
-        angular.element('.ham').toggleClass('ham-right');
-        angular.element('.sidebar').toggleClass('sidebar-open');
-        angular.element('.page').toggleClass('toggle');
+        angular.element('body').addClass('toggle');
 
+        var openSidebar = TweenMax.to('.sidebar', .4, {
+            x: 0,
+            ease: Power1.easeOut
+        });
 
     }
+
+    //Close Sidebar | Function
+    $scope.closeSidebar = function() {
+
+        //Angualar Jquery Lite
+        angular.element('body').removeClass('toggle');
+
+        var openSidebar = TweenMax.to('.sidebar', .4, {
+            x: -300,
+            ease: Power1.easeOut
+        });
+
+    }
+
+
 
     //Name Of Current State
     $scope.state = $state;
@@ -787,7 +812,7 @@ khi.controller('header', function($rootScope, $scope, $state, kAuth, $stateParam
 
             } else if (param.type === 'attend') {
 
-                $scope.title = 'Stage & Attendants';
+                $scope.title = 'Sound And Attendants';
 
             } else if (param.type === 'incoming') {
 
@@ -957,8 +982,22 @@ khi.controller('dashboard', function($scope, $http, localStorageService, schedul
 
     }
 
-    //Catch Scroll Events
-    $('')
+    //Check if Video
+    $scope.checkVid = function(part){
+
+        //console.log(part + ': ' + part.indexOf('Video'));
+
+        if(part.indexOf('Video') > -1 || part.indexOf('video') > -1){
+
+            return true;
+
+        } else {
+
+            return false;
+
+        }
+
+    }
 
 });
 
@@ -1055,6 +1094,23 @@ khi.controller('schedules', function($scope, $state, localStorageService, $http,
 
     //Todays Date
     $scope.todayDate = new Date();
+
+    //Check if Video
+    $scope.checkVid = function(part){
+
+        //console.log(part + ': ' + part.indexOf('Video'));
+
+        if(part.indexOf('Video') > -1 || part.indexOf('video') > -1){
+
+            return true;
+
+        } else {
+
+            return false;
+
+        }
+
+    }
 
 });
 

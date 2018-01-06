@@ -90,7 +90,6 @@
                     <div class="left">
                         <li class="assignments">
                             Sample Videos: <b>{{ sch.videoN }}</b>
-                            <hr>
                         </li>
                     </div>
                     
@@ -99,16 +98,44 @@
                 <div ng-if="sch.video == 0" class="no-video">
                     
                     <div class="left">
-                        <li class="assignments block-it">{{ sch.initialCall || 'Initial Call' }}: 
+                        <li ng-if="sch.initialCall != 'Initial Call' && checkVid(sch.initialCall) == true" class="assignments block-it">{{ sch.initialCall || 'Initial Call' }}: 
+                            <b>{{ sch.initialN1 || 'Coming Soon' }}</b>
+                            <!-- <b class="Cousel">({{ sch.cp2 }})</b><br class="small-br"> -->
+                             (2 min. or less) <br>
+                            <i>{{ sch.initialM }}</i>
+                        </li>
+
+                        <li ng-if="sch.initialCall != 'Initial Call' && checkVid(sch.initialCall) == false" class="assignments block-it">{{ sch.initialCall || 'Initial Call' }}: 
                             <b>{{ sch.initialN1 || 'Coming Soon' }} / {{ sch.initialN2 || 'Coming Soon' }}</b>
                             <b class="Cousel">({{ sch.cp2 }})</b><br class="small-br">
-                             (2 min. or less) <br>
-                            <i>{{ sch.initialM }}</i>hf
+                                (2 min. or less) <br>
+                            <i>{{ sch.initialM }}</i>
+                        </li>
+
+                        <li ng-if="sch.initialCall == 'Initial Call'" class="assignments block-it">{{ sch.initialCall || 'Initial Call' }}: 
+                            <b>{{ sch.initialN1 || 'Coming Soon' }} / {{ sch.initialN2 || 'Coming Soon' }}</b>
+                            <b class="Cousel">({{ sch.cp2 }})</b><br class="small-br">
+                                (2 min. or less) <br>
+                            <i>{{ sch.initialM }}</i>
                         </li>
                     </div>
 
                     <div class="left">
-                        <li class="assignments block-it">{{ sch.returnVisit || 'Return Visit' }}: 
+                        <li ng-if="sch.returnVisit != 'Return Visit' && checkVid(sch.returnVisit) == true" class="assignments block-it">{{ sch.returnVisit || 'Return Visit' }}: 
+                            <b>{{ sch.returnN1 || 'Coming Soon' }}</b>
+                            <!-- <b class="Cousel">({{ sch.cp3 }})</b><br class="small-br"> -->
+                                (4 min. or less) <br>
+                            <i>{{ sch.returnM }}</i>
+                        </li>
+
+                        <li ng-if="sch.returnVisit != 'Return Visit' && checkVid(sch.returnVisit) == false" class="assignments block-it">{{ sch.returnVisit || 'Return Visit' }}: 
+                            <b>{{ sch.returnN1 || 'Coming Soon' }} / {{ sch.returnN2 || 'Coming Soon' }}</b>
+                            <b class="Cousel">({{ sch.cp3 }})</b><br class="small-br">
+                                (4 min. or less) <br>
+                            <i>{{ sch.returnM }}</i>
+                        </li>
+                        
+                        <li ng-if="sch.returnVisit == 'Return Visit'" class="assignments block-it">{{ sch.returnVisit || 'Return Visit' }}: 
                             <b>{{ sch.returnN1 || 'Coming Soon' }} / {{ sch.returnN2 || 'Coming Soon' }}</b>
                             <b class="Cousel">({{ sch.cp3 }})</b><br class="small-br">
                              (4 min. or less) <br>
@@ -117,12 +144,20 @@
                     </div>
 
                     <div class="left">
-                        <li ng-if="sch.bibleStudy != 'Talk'" class="assignments block-it">{{ sch.bibleStudy || 'Bible Study' }}:
-                            <b>{{ sch.bibleN1 || 'Coming Soon' }} / {{ sch.bibleN2 || 'Coming Soon' }}</b>
+                        <li ng-if="sch.bibleStudy != 'Talk' && sch.bibleStudy != 'Bible Study'" class="assignments block-it">{{ sch.bibleStudy || 'Bible Study' }}:
+                            <b>{{ sch.bibleN1 || 'Coming Soon' }}</b>
                             <b class="Cousel">({{ sch.cp4 }})</b><br class="small-br">
                              (6 min. or less) <br>
                             <i>{{ sch.bibleM }}</i>
                         </li>
+
+                        <li ng-if="sch.bibleStudy == 'Bible Study'" class="assignments block-it">{{ sch.bibleStudy || 'Bible Study' }}:
+                            <b>{{ sch.bibleN1 || 'Coming Soon' }} / {{ sch.bibleN2 || 'Coming Soon' }}</b>
+                            <b class="Cousel">({{ sch.cp4 }})</b><br class="small-br">
+                                (6 min. or less) <br>
+                            <i>{{ sch.bibleM }}</i>
+                        </li>
+
                         <li ng-if="sch.bibleStudy == 'Talk'" class="assignments block-it">{{ sch.bibleStudy || 'Talk' }}:
                             <b>{{ sch.bibleN1 || 'Coming Soon' }}</b>
                             <b class="Cousel">({{ sch.cp4 }})</b><br class="small-br">
@@ -217,7 +252,7 @@
            
            <div class="sch-name">
                 
-                Our Stage and Attendants
+                Our Sound and Attendants
                 
             </div>
             
@@ -986,7 +1021,7 @@
                 
                 <b class="medium">Congregation: {{sch.congregation1}}</b>
 
-                <b class="medium">Time: {{sch.time1 | utcConvert | date : "shortTime"}}</b>
+                <b class="medium">Time: {{sch.time1 | momentParseTime | date : "shortTime"}}</b>
                 
             </div>
             
@@ -1000,7 +1035,7 @@
                 
                 <b class="medium">Congregation: {{sch.congregation2}}</b>
 
-                <b class="medium">Time: {{sch.time2 | utcConvert | date : "shortTime"}}</b>
+                <b class="medium">Time: {{sch.time2 | momentParseTime | date : "shortTime"}}</b>
                 
             </div>
             
@@ -1014,7 +1049,7 @@
                 
                 <b class="medium">Congregation: {{sch.congregation3}}</b>
 
-                <b class="medium">Time: {{sch.time3 | utcConvert | date : "shortTime"}}</b>
+                <b class="medium">Time: {{sch.time3 | momentParseTime | date : "shortTime"}}</b>
                 
             </div>
             
@@ -1028,7 +1063,7 @@
                 
                 <b class="medium">Congregation: {{sch.congregation4}}</b>
 
-                <b class="medium">Time: {{sch.time4 | utcConvert | date : "shortTime"}}</b>
+                <b class="medium">Time: {{sch.time4 | momentParseTime | date : "shortTime"}}</b>
                 
             </div>
             
@@ -1042,7 +1077,7 @@
                 
                 <b class="medium">Congregation: {{sch.congregation5}}</b>
 
-                <b class="medium">Time: {{sch.time5 | utcConvert | date : "shortTime"}}</b>
+                <b class="medium">Time: {{sch.time5 | momentParseTime | date : "shortTime"}}</b>
                 
             </div>
         

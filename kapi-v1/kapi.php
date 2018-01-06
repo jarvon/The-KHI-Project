@@ -4,7 +4,7 @@
 //Allow External Access
 //-------------------------
 
-//Only To Main Website
+//Only Allow Main Website
 header('Access-Control-Allow-Origin: http://mykhinfo.com');
 
 //-------------------------
@@ -129,7 +129,7 @@ if(!empty($_GET['sourceId'])){
 if($task === 'login'){
     
     //Include Task File
-    include 'task/login.task.php';
+    include 'task/login.php';
     
 };
 
@@ -138,7 +138,8 @@ if($task === 'login'){
 //-------------------------
 if($task === 'loginAdmin'){
     
-    include 'task/login.admin.task.php';
+    //Login Admin
+    include 'task/login-admin.php';
     
 };
 
@@ -562,6 +563,7 @@ if($task === 'save'){
         //Source Query
         $sourceQuery = $db->query("SELECT * FROM meeting_material WHERE id = '$sourceId'");
         
+        //Time Query
         $timeQuery = $db->query("SELECT * FROM lm_time WHERE pin = '$pin'");
         
         
@@ -662,8 +664,10 @@ if($task === 'save'){
         //Create Time
         $t3Time = date("H:i", strtotime("+".$t3STime." minutes", $lnTimeCV));
         
+        //Bible Study Time
         $bsTime = $time['bsTime'];
         
+        //Return Visit Time
         $rvTime = $time['rvTime'];
         
         
@@ -763,7 +767,122 @@ if($task === 'save'){
 
             if($saveCheck >= 1){
 
+                $fmSDate = date('M jS, Y', strtotime($sDate));
+                $fmEDate = date('M jS, Y', strtotime($eDate));
+
                 echo "Success";
+
+                //Send Update Email
+                $to = 'test@mykhinfo.com';
+                $subject = "Updated Life And Ministry Schedule";
+
+                $htmlContent = '
+                <!DOCTYPE html>
+                <html lang="en">
+                <head>
+                    <meta charset="UTF-8">
+                    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+                    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+                    <title>Update Life And Ministry</title>
+                    <style>
+
+                    /* Fonts */
+                    @import url("https://fonts.googleapis.com/css?family=Heebo:100,200,400");
+
+                    body {
+                        margin: 0;
+                        font-family: "Heebo", sans-serif;
+                        font-weight: 400;
+                    }
+
+                    h1, h3 {
+                        margin: 0px 5px 0px 5px;
+                        padding: 0px 5px 0px 5px;
+                        text-align: center;
+                        color: #65605e;
+                    }
+
+                    p {
+                        margin: 5px;
+                        padding: 5px;
+                        text-align: center;
+                        border-top: 2px solid #65605e;
+                    }
+
+                    a.boldLink {
+                        display: block;
+                        font-size: 20px;
+                        margin: 10px 0;
+                        padding: 10px;
+                        background-color: #dfdfdf;
+                        text-decoration: none;
+                        text-align: center;
+                        color: #65605e;
+                    }
+
+                    .logo {
+                        width: 100%;
+                        height: 100px;
+                        background-color: #799FCC;
+                        padding: 5px 0;
+                        margin-bottom: 55px;
+                    }
+
+                    .logo img {
+                        display: block;
+                        height: 150px;
+                        width: auto;
+                        margin: 0 auto;
+                    }
+
+                    </style>
+                </head>
+                <body>
+
+                    <div class="logo">
+                        <img src="http://mykhinfo.com/img/logo/2018/Logo-2018-500x500-Blue.png" alt="The MyKHInfo Logo">
+                    </div>
+
+                    <h1>Updated Schedule</h1>
+                    <h3>Life And Ministry</h3>
+
+                    <p>
+                        <b style="font-size: 18px">A schedule on your information board has been modifed.</b><br><br>
+
+                        <b style="display: block; font-size: 20px; background-color: #2878bb; padding: 5px; color: white">Week Of</b>
+                        <b style="display: block; font-size: 20px; background-color: #799FCC; padding: 5px; color: white">'. $fmSDate .' - '. $fmEDate .'</b>
+                        <br>
+
+
+                        For your convienence we\'ve included a link to the schedule.
+                        Please look over it well and we encourage all to prepare well for any upcoming assignments.
+                    </p>
+
+                    <!-- Login Link -->
+                    <a class="boldLink" href="http://mykhinfo.com">Click Here To View Schedule!</a>
+                    
+                </body>
+                </html>';
+
+                // Set content-type header for sending HTML email
+                $headers = "MIME-Version: 1.0" . "\r\n";
+                $headers .= "Content-type:text/html;charset=UTF-8" . "\r\n";
+
+                // Additional headers
+                $headers .= 'From: My Kingdom Hall Info<sender@example.com>' . "\r\n";
+                //$headers .= 'Cc: welcome@example.com' . "\r\n";
+                //$headers .= 'Bcc: welcome2@example.com' . "\r\n";
+
+                // Send email
+                if(mail($to,$subject,$htmlContent,$headers)){
+
+                    $successMsg = 'Email has sent successfully.';
+
+                } else {
+
+                    $errorMsg = 'Email sending fail.';
+
+                }
 
             } else {
 

@@ -109,38 +109,74 @@
                 
                 <div ng-if="sch.video == 0" class="no-video">
                     
-                    <div class="left">
-                        <li class="assignments">{{ sch.initialCall || 'Initial Call' }}: 
-                            <b>{{ sch.initialN1 || 'Coming Soon' }} / {{ sch.initialN2 || 'Coming Soon' }}</b>
-                            <b class="Cousel">({{ sch.cp2 }})</b><br class="small-br">
-                             (2 min. or less) <br>
-                            <i>{{ sch.initialM }}</i> <hr>
-                        </li>
-                    </div>
-
-                    <div class="left">
-                        <li class="assignments">{{ sch.returnVisit || 'Return Visit' }}: 
-                            <b>{{ sch.returnN1 || 'Coming Soon' }} / {{ sch.returnN2 || 'Coming Soon' }}</b>
-                            <b class="Cousel">({{ sch.cp3 }})</b><br class="small-br">
-                             (4 min. or less) <br>
-                            <i>{{ sch.returnM }}</i> <hr>
-                        </li>
-                    </div>
-
-                    <div class="left">
-                        <li ng-if="sch.bibleStudy != 'Talk'" class="assignments">{{ sch.bibleStudy || 'Bible Study' }}:
-                            <b>{{ sch.bibleN1 || 'Coming Soon' }} / {{ sch.bibleN2 || 'Coming Soon' }}</b>
-                            <b class="Cousel">({{ sch.cp4 }})</b><br class="small-br">
-                             (6 min. or less) <br>
-                            <i>{{ sch.bibleM }}</i><hr>
-                        </li>
-                        <li ng-if="sch.bibleStudy == 'Talk'" class="assignments">{{ sch.bibleStudy || 'Talk' }}:
-                            <b>{{ sch.bibleN1 || 'Coming Soon' }}</b>
-                            <b class="Cousel">({{ sch.cp4 }})</b><br class="small-br">
-                             (6 min. or less) <br>
-                            <i>{{ sch.bibleM }}</i><hr>
-                        </li>
-                    </div>
+                        <div class="left">
+                                <li ng-if="sch.initialCall != 'Initial Call' && checkVid(sch.initialCall) == true" class="assignments block-it">{{ sch.initialCall || 'Initial Call' }}: 
+                                    <b>{{ sch.initialN1 || 'Coming Soon' }}</b>
+                                    <!-- <b class="Cousel">({{ sch.cp2 }})</b><br class="small-br"> -->
+                                     (2 min. or less) <br>
+                                    <i>{{ sch.initialM }}</i>
+                                </li>
+        
+                                <li ng-if="sch.initialCall != 'Initial Call' && checkVid(sch.initialCall) == false" class="assignments block-it">{{ sch.initialCall || 'Initial Call' }}: 
+                                    <b>{{ sch.initialN1 || 'Coming Soon' }} / {{ sch.initialN2 || 'Coming Soon' }}</b>
+                                    <b class="Cousel">({{ sch.cp2 }})</b><br class="small-br">
+                                        (2 min. or less) <br>
+                                    <i>{{ sch.initialM }}</i>
+                                </li>
+        
+                                <li ng-if="sch.initialCall == 'Initial Call'" class="assignments block-it">{{ sch.initialCall || 'Initial Call' }}: 
+                                    <b>{{ sch.initialN1 || 'Coming Soon' }} / {{ sch.initialN2 || 'Coming Soon' }}</b>
+                                    <b class="Cousel">({{ sch.cp2 }})</b><br class="small-br">
+                                        (2 min. or less) <br>
+                                    <i>{{ sch.initialM }}</i>
+                                </li>
+                            </div>
+        
+                            <div class="left">
+                                <li ng-if="sch.returnVisit != 'Return Visit' && checkVid(sch.returnVisit) == true" class="assignments block-it">{{ sch.returnVisit || 'Return Visit' }}: 
+                                    <b>{{ sch.returnN1 || 'Coming Soon' }}</b>
+                                    <!-- <b class="Cousel">({{ sch.cp3 }})</b><br class="small-br"> -->
+                                        (4 min. or less) <br>
+                                    <i>{{ sch.returnM }}</i>
+                                </li>
+        
+                                <li ng-if="sch.returnVisit != 'Return Visit' && checkVid(sch.returnVisit) == false" class="assignments block-it">{{ sch.returnVisit || 'Return Visit' }}: 
+                                    <b>{{ sch.returnN1 || 'Coming Soon' }} / {{ sch.returnN2 || 'Coming Soon' }}</b>
+                                    <b class="Cousel">({{ sch.cp3 }})</b><br class="small-br">
+                                        (4 min. or less) <br>
+                                    <i>{{ sch.returnM }}</i>
+                                </li>
+                                
+                                <li ng-if="sch.returnVisit == 'Return Visit'" class="assignments block-it">{{ sch.returnVisit || 'Return Visit' }}: 
+                                    <b>{{ sch.returnN1 || 'Coming Soon' }} / {{ sch.returnN2 || 'Coming Soon' }}</b>
+                                    <b class="Cousel">({{ sch.cp3 }})</b><br class="small-br">
+                                     (4 min. or less) <br>
+                                    <i>{{ sch.returnM }}</i>
+                                </li>
+                            </div>
+        
+                            <div class="left">
+                                <li ng-if="sch.bibleStudy != 'Talk' && sch.bibleStudy != 'Bible Study'" class="assignments block-it">{{ sch.bibleStudy || 'Bible Study' }}:
+                                    <b>{{ sch.bibleN1 || 'Coming Soon' }}</b>
+                                    <b class="Cousel">({{ sch.cp4 }})</b><br class="small-br">
+                                     (6 min. or less) <br>
+                                    <i>{{ sch.bibleM }}</i>
+                                </li>
+        
+                                <li ng-if="sch.bibleStudy == 'Bible Study'" class="assignments block-it">{{ sch.bibleStudy || 'Bible Study' }}:
+                                    <b>{{ sch.bibleN1 || 'Coming Soon' }} / {{ sch.bibleN2 || 'Coming Soon' }}</b>
+                                    <b class="Cousel">({{ sch.cp4 }})</b><br class="small-br">
+                                        (6 min. or less) <br>
+                                    <i>{{ sch.bibleM }}</i>
+                                </li>
+        
+                                <li ng-if="sch.bibleStudy == 'Talk'" class="assignments block-it">{{ sch.bibleStudy || 'Talk' }}:
+                                    <b>{{ sch.bibleN1 || 'Coming Soon' }}</b>
+                                    <b class="Cousel">({{ sch.cp4 }})</b><br class="small-br">
+                                     (6 min. or less) <br>
+                                    <i>{{ sch.bibleM }}</i>
+                                </li>
+                            </div>
                     
                 </div>
                 

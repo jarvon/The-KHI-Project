@@ -17,7 +17,7 @@
         <div class="link">
 
             <!-- Dash Link -->
-            <a ui-sref="Guest.Dashboard" class="links" ui-sref-active="active" ng-click="toggleSidebar()">
+            <a ui-sref="Guest.Dashboard" class="links" ui-sref-active="active" ng-click="closeSidebar()">
                 <li>
                     <div class="icon"><img src="img/icons/icons8-Home-64.png" /></div>
                     Dashboard
@@ -25,7 +25,7 @@
             </a>
 
             <!-- Life And Ministry -->
-            <a ui-sref="Guest.List({type: 'life', id: 0})" ui-sref-active="active" class="links" ng-click="toggleSidebar()">
+            <a ui-sref="Guest.List({type: 'life', id: 0})" ui-sref-active="active" class="links" ng-click="closeSidebar()">
                 <li>
 
                     <!-- Main Icon -->
@@ -38,20 +38,20 @@
             </a>
             
             <!-- Life And Ministry -->
-            <a ui-sref="Guest.List({type: 'attend', id: 0})" ui-sref-active="active" class="links" ng-click="toggleSidebar()">
+            <a ui-sref="Guest.List({type: 'attend', id: 0})" ui-sref-active="active" class="links" ng-click="closeSidebar()">
                 <li>
 
                     <!-- Main Icon -->
                     <div class="icon"><img src="img/icons/icons8-Bill-64.png" /></div>
 
                     <!-- Link Title -->
-                    Stage & Attendants
+                    Sound And Attendants
 
                 </li>
             </a>
             
             <!-- Life And Ministry -->
-            <a ui-sref="Guest.List({type: 'incoming', id: 0})" ui-sref-active="active" class="links" ng-click="toggleSidebar()">
+            <a ui-sref="Guest.List({type: 'incoming', id: 0})" ui-sref-active="active" class="links" ng-click="closeSidebar()">
                 <li>
 
                     <!-- Main Icon -->
@@ -64,7 +64,7 @@
             </a>
 
             <!-- Life And Ministry -->
-            <a ui-sref="Guest.List({type: 'outgoing', id: 0})" ui-sref-active="active" class="links" ng-click="toggleSidebar()">
+            <a ui-sref="Guest.List({type: 'outgoing', id: 0})" ui-sref-active="active" class="links" ng-click="closeSidebar()">
                 <li>
                     <div class="icon"><img src="img/icons/icons8-Bill-64.png" /></div>
                     Outgoing Speakers
@@ -72,7 +72,7 @@
             </a>
 
             <!-- Logout Link -->
-            <a href="login" ng-click="toggleSidebar(); logout('guest')" class="links">
+            <a href="login" ng-click="closeSidebar(); logout('guest')" class="links">
                 <li>
                     <div class="icon"><img src="img/icons/icons8-SignOut-64.png" /></div>
                     Logout
@@ -84,7 +84,7 @@
     </div>
 
     <div class="version">
-        Version 0.8.0
+        Version 0.9.0
     </div>
 
 </div>

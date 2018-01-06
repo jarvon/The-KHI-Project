@@ -35,6 +35,10 @@ body {
     font-family: 'Heebo', sans-serif;
     font-weight: 400;
 
+    &.toggle {
+        overflow-y: hidden;
+    }
+
     &.no-scroll {
         overflow: hidden !important;
     }
@@ -311,11 +315,13 @@ li {
     left: 0;
     
     .banner-container {
+        position: relative;
         background-image: url(../img/stock/File_000.jpeg);
         background-attachment: scroll;
         background-position: center;
         background-size: cover;
         background-repeat: no-repeat;
+        z-index: 49;
         
         .welcome {
             height: auto;
@@ -346,9 +352,11 @@ li {
     
     //Container
     .container {
+        position: relative;
         max-width: 1000px;
         height: 100%;
         margin: 50px auto;
+        z-index: 50;
 
         &.toggle {
             width: calc(60% - 10px);
@@ -2289,6 +2297,16 @@ li {
 
             .login-form {
                 position: relative;
+
+                &:before {
+                    content: '';
+                    opacity: .9;
+                    left: 0;
+                    position: absolute;
+                    height: 100px;
+                    width: 100vw;
+                    background-color: $jwLightBlue;
+                }
 
                 .logo {
                     height: 150px;
