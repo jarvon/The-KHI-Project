@@ -14,6 +14,68 @@
     border-right: 1px solid rgb(210, 210, 210);
     
     .sidebar-container {
+
+        .ham {
+            opacity: .7;
+            position: absolute;
+            height: 50px;
+            width: 35px;
+            padding: 0px 10px;
+            overflow: hidden;
+            right: 0;
+            z-index: 101;
+            background-color: $lightWhite;
+            -webkit-tap-highlight-color: rgba(0,0,0,0);
+            -webkit-transition: transform .3s ease-in-out;
+            transition: transform .3s ease-in-out;
+            transform: scale(0.6);
+            border-radius: 5px;
+            
+            .pat1 {
+                position: absolute;
+                height: 3px;
+                width: 35px;
+                margin-top: 14px;
+                border-radius: 2px;
+                background-color: $jwLightBlue;
+
+                transform: rotate(50deg);
+            -webkit-transform: rotate(50deg);
+            margin: 23px 0px 0px 0px;
+                
+            }
+            
+            .pat2 {
+                position: absolute;
+                height: 3px;
+                width: 35px;
+                margin-top: 23px;
+                border-radius: 2px;
+                background-color: $jwLightBlue;
+
+                transform: rotate(50deg);
+            -webkit-transform: rotate(50deg);
+            margin: 23px 0px 0px 0px;
+            }
+            
+            .pat3 {
+                position: absolute;
+                height: 3px;
+                width: 35px;
+                margin-top: 32px;
+                border-radius: 2px;
+                background-color: $jwLightBlue;
+
+                transform: rotate(-50deg);
+            -webkit-transform: rotate(-50deg);
+            margin: 23px 0px 0px 0px;
+            }
+    
+            &:hover {
+                opacity: 1;
+            }
+            
+        }
         
         .logo {
             //BG-Color

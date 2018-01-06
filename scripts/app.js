@@ -727,6 +727,8 @@ khi.controller('header', function($rootScope, $scope, $state, kAuth, $stateParam
     //Open Sidebar | Function
     $scope.openSidebar = function() {
 
+        var winHeight = $(window).width();
+
         //Angualar Jquery Lite
         angular.element('body').addClass('toggle');
 
@@ -735,10 +737,18 @@ khi.controller('header', function($rootScope, $scope, $state, kAuth, $stateParam
             ease: Power1.easeOut
         });
 
+        if(winHeight <= 600){
+
+            var hideIco = TweenMax.to('.ico-links', .2, {opacity: 0, ease: Power1.easeOut});
+
+        }
+
     }
 
     //Close Sidebar | Function
     $scope.closeSidebar = function() {
+
+        var winHeight = $(window).width();
 
         //Angualar Jquery Lite
         angular.element('body').removeClass('toggle');
@@ -747,6 +757,12 @@ khi.controller('header', function($rootScope, $scope, $state, kAuth, $stateParam
             x: -300,
             ease: Power1.easeOut
         });
+
+        if(winHeight <= 600){
+
+            var hideIco = TweenMax.to('.ico-links', .2, {opacity: 1, ease: Power1.easeOut});
+
+        }
 
     }
 
