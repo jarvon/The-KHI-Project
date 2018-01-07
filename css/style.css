@@ -191,10 +191,10 @@ Version: 3.0
 .sidebar {
   top: 0;
   position: fixed;
-  transform: translateX(-275px);
-  -webkit-transform: translateX(-275px);
   height: 100%;
   width: 274px;
+  transform: translateX(-275px);
+  -webkit-transform: translateX(-275px);
   background-color: white;
   overflow: hidden;
   z-index: 100;
@@ -513,15 +513,6 @@ li {
           transform: translateY(100%); }
       .dashContainer .friendsContainer .newFriend.toggle {
         transform: translateY(51px); }
-  .dashContainer .blogContainer {
-    width: calc(57% - 8px);
-    height: 400px;
-    margin-left: 2%;
-    margin-top: 2%;
-    margin-bottom: 2%;
-    background-color: #78909C;
-    border: 4px solid #78909C;
-    overflow: hidden; }
   .dashContainer .admin-welcome {
     width: 100%;
     display: block;
@@ -796,8 +787,7 @@ li {
             display: none; }
           .page .container .schedule .life-ministry .dropdown .search {
             width: calc(100% - 10px);
-            padding: 10px;
-            box-shadow: 0px 0px 10px #78909C; }
+            padding: 10px; }
             .page .container .schedule .life-ministry .dropdown .search input {
               width: inherit;
               padding: 10px 10px; }
@@ -830,8 +820,7 @@ li {
         .page .container .schedule .life-ministry .dropdown-slideup {
           transform: translateY(0);
           height: 350px;
-          box-shadow: 0px 0px 10px #90A4AE;
-          animation: slide-up .4s ease-in-out; }
+          box-shadow: 0px 0px 10px #90A4AE; }
       .page .container .schedule .attendants {
         padding: 10px; }
         .page .container .schedule .attendants .sch-name {
@@ -1436,12 +1425,11 @@ li {
       transform: translateX(0); }
   .page .sch-picker-container .sch-picker {
     float: left;
-    width: calc(33.3% - 45px);
-    margin: 30px 0px 30px 25px;
+    width: calc(33.3% - 30px);
+    margin: 15px;
     height: 300px;
     background-color: #c3c3c3;
-    border: 5px solid white;
-    border-radius: 10px;
+    border-radius: 5px;
     transition: all .2s ease-in-out;
     overflow: hidden; }
     .page .sch-picker-container .sch-picker .name {
@@ -1502,8 +1490,6 @@ li {
       transform: translateY(-300px); }
     .page .sch-picker-container .sch-picker .options-down {
       transform: translateY(0px); }
-  .page .sch-picker-container .sch-picker:hover {
-    box-shadow: 0px 0px 15px grey; }
   .page .maps-container {
     height: calc(100vh - 50px);
     overflow: hidden; }
@@ -1824,6 +1810,162 @@ li {
           height: 23px !important;
           width: 23px !important; }
 
+  .dashContainer {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap; }
+    .dashContainer .friendsContainer {
+      display: block;
+      width: calc(100% -  20px);
+      height: 400px;
+      margin: 10px;
+      background-color: #eae9e6;
+      border: 2px solid #d2d2d2;
+      overflow: hidden; }
+      .dashContainer .friendsContainer .search {
+        position: fixed;
+        display: inline-block;
+        height: 50px;
+        width: calc(100% - 20px);
+        background-color: #e1e1e1;
+        border-bottom: 2px solid #d2d2d2;
+        overflow: hidden;
+        z-index: 3; }
+        .dashContainer .friendsContainer .search .title {
+          transform: translateY(-60px);
+          position: absolute;
+          font-size: 20px;
+          padding: 0 10px;
+          color: white;
+          font-weight: 400;
+          transition: all .5s ease-in-out; }
+          .dashContainer .friendsContainer .search .title.toggle {
+            transform: translateY(-2px); }
+        .dashContainer .friendsContainer .search input {
+          transform: translateY(0);
+          width: calc(100% - 65px);
+          padding: 10px;
+          margin: 6px;
+          border: none;
+          font-size: 15px;
+          transition: all .5s ease-in-out;
+          outline: none; }
+          .dashContainer .friendsContainer .search input.toggle {
+            transform: translateY(50px); }
+        .dashContainer .friendsContainer .search img {
+          height: 40px;
+          widows: auto;
+          margin: 5px;
+          position: absolute;
+          transition: all .5s ease-in-out; }
+          .dashContainer .friendsContainer .search img.toggle {
+            transform: rotate(360deg); }
+      .dashContainer .friendsContainer .results {
+        display: block;
+        transform: translateY(-300px);
+        width: 100%;
+        height: calc(400px - 50px);
+        background-color: inherit;
+        overflow-y: scroll;
+        -webkit-overflow-scrolling: touch;
+        transition: all .5s ease-in-out;
+        -webkit-transition: all .5s ease-in-out; }
+        .dashContainer .friendsContainer .results::-webkit-scrollbar {
+          display: none; }
+        .dashContainer .friendsContainer .results li {
+          transform: translateY(0px);
+          margin: 10px;
+          padding: 15px;
+          font-size: 15px;
+          color: #65605e;
+          border-bottom: 1px solid #65605e; }
+          .dashContainer .friendsContainer .results li .gender {
+            float: left;
+            height: 22px;
+            width: 22px;
+            margin: 0 10px 0 0; }
+          .dashContainer .friendsContainer .results li .options {
+            float: right;
+            height: 22px;
+            width: 22px; }
+        .dashContainer .friendsContainer .results li:nth-child(odd) {
+          animation: resultLeft .7s; }
+        .dashContainer .friendsContainer .results li:nth-child(even) {
+          animation: resultLeft .5s; }
+        .dashContainer .friendsContainer .results.toggle {
+          transform: translateY(52px); }
+  @keyframes resultLeft {
+    0% {
+      transform: translateY(-100px); }
+    50% {
+      transform: translateY(20px); }
+    70% {
+      transform: translateY(-10px); }
+    100% {
+      transform: translateY(0px); } }
+      .dashContainer .friendsContainer .newFriend {
+        display: block;
+        transform: translateY(-300px);
+        height: calc(400px - 50px);
+        width: 100%;
+        background-color: #90A4AE;
+        overflow-y: scroll;
+        -webkit-overflow-scrolling: touch;
+        transition: all .5s ease-in-out;
+        -webkit-transition: all .5s ease-in-out; }
+        .dashContainer .friendsContainer .newFriend h3 {
+          margin: 5px 10px;
+          padding: 5px;
+          font-size: 15px;
+          color: white;
+          font-weight: 400;
+          border-bottom: 1px solid #78909C; }
+        .dashContainer .friendsContainer .newFriend input {
+          width: 50%;
+          margin: 10px;
+          padding: 5px;
+          border: 2px solid #78909C; }
+        .dashContainer .friendsContainer .newFriend select {
+          margin: 10px;
+          padding: 5px;
+          width: 50%; }
+        .dashContainer .friendsContainer .newFriend button {
+          padding: 5px;
+          width: 100px;
+          background-color: #78909C;
+          border: 2px solid white;
+          color: white; }
+          .dashContainer .friendsContainer .newFriend button.done {
+            background-color: forestgreen; }
+        .dashContainer .friendsContainer .newFriend .status {
+          position: absolute;
+          height: 30px;
+          width: 30px;
+          margin: 10px 0; }
+        .dashContainer .friendsContainer .newFriend .success {
+          transform: translateY(100%);
+          bottom: 0;
+          position: fixed;
+          background-color: #78909C;
+          text-align: center;
+          width: 100%;
+          padding: 10px 0;
+          transition: all .5s ease-in-out; }
+          .dashContainer .friendsContainer .newFriend .success.show {
+            transform: translateY(0); }
+          .dashContainer .friendsContainer .newFriend .success.hide {
+            transform: translateY(100%); }
+        .dashContainer .friendsContainer .newFriend.toggle {
+          transform: translateY(51px); }
+    .dashContainer .admin-welcome {
+      width: 100%;
+      display: block;
+      font-size: 25px;
+      padding: 10px;
+      margin: 10px;
+      border-bottom: 2px solid grey;
+      border-left: 4px solid grey; }
+
   .banner-container {
     border-radius: 0px !important;
     margin: 0px !important; }
@@ -1885,6 +2027,69 @@ li {
         .page .container .schedule .life-ministry .wbr-header {
           font-size: 15px;
           padding: 5px; }
+        .page .container .schedule .life-ministry .dropdown {
+          top: 50px;
+          transform: translateX(100%);
+          -webkit-transform: translateX(100%);
+          bottom: 0;
+          right: 0;
+          position: fixed;
+          padding: 0;
+          margin: 0px 0px;
+          width: 75%;
+          height: calc( 100% - 50px);
+          background-color: #eae9e6;
+          box-shadow: none;
+          transition: all .4s ease-in-out;
+          overflow: hidden;
+          z-index: 100; }
+          .page .container .schedule .life-ministry .dropdown ::-webkit-scrollbar {
+            display: none; }
+          .page .container .schedule .life-ministry .dropdown .search {
+            width: calc(100% - 5px);
+            padding: 5px;
+            border-bottom: 1px solid #d2d2d2;
+            background-color: white; }
+            .page .container .schedule .life-ministry .dropdown .search input {
+              width: inherit;
+              padding: 10px 10px;
+              border: none; }
+              .page .container .schedule .life-ministry .dropdown .search input:hover {
+                box-shadow: none !important; }
+          .page .container .schedule .life-ministry .dropdown .list {
+            height: calc(100% - 45px);
+            overflow: auto; }
+            .page .container .schedule .life-ministry .dropdown .list li {
+              height: 40px;
+              width: inherit;
+              margin: 0;
+              padding: 0px;
+              font-size: 13px;
+              color: #65605e;
+              border-bottom: 1px solid #65605e;
+              text-align: left;
+              overflow: hidden; }
+            .page .container .schedule .life-ministry .dropdown .list li:hover {
+              background-color: inherit; }
+            .page .container .schedule .life-ministry .dropdown .list li .icon {
+              float: left;
+              width: 30px;
+              height: 30px;
+              margin: -5px 0 0 -2.5px;
+              padding: 10px;
+              border-radius: 2.5px;
+              transform: scale(0.6);
+              z-index: 7;
+              background-color: grey; }
+              .page .container .schedule .life-ministry .dropdown .list li .icon img {
+                height: 100%;
+                width: auto; }
+            .page .container .schedule .life-ministry .dropdown .list li p {
+              margin: 11px 0; }
+        .page .container .schedule .life-ministry .dropdown-slideup {
+          transform: translateX(0);
+          -webkit-transform: translateX(0);
+          border-left: 1px solid #d2d2d2; }
       .page .container .schedule .attendants {
         padding: 0; }
         .page .container .schedule .attendants .sch-name {
@@ -1930,6 +2135,74 @@ li {
           .page .container .schedule .incoming .assignment b.large {
             font-size: 20px;
             max-width: 100%; }
+  .page .sch-picker-container .sch-picker {
+    float: left;
+    width: calc(100% - 20px);
+    margin: 10px;
+    height: 300px;
+    background-color: #c3c3c3;
+    border: none;
+    border-radius: 2.5px;
+    transition: all .2s ease-in-out;
+    overflow: hidden; }
+    .page .sch-picker-container .sch-picker .name {
+      transform: translateY(0);
+      height: inherit;
+      width: 100%;
+      overflow: hidden;
+      transition: all .5s ease-in-out; }
+      .page .sch-picker-container .sch-picker .name h2 {
+        width: calc(100% - 50px);
+        margin: 80px 25px;
+        text-align: left;
+        color: #5b7226;
+        font-weight: 400;
+        font-size: 25px;
+        border-bottom: 2px solid white; }
+      .page .sch-picker-container .sch-picker .name button {
+        width: calc(100% - 50px);
+        margin: 10px 25px;
+        padding: 15px 0;
+        font-size: 18px;
+        color: white;
+        border-radius: 0;
+        background-color: #65605e;
+        transition: all .2s ease-in-out;
+        outline: none; }
+      .page .sch-picker-container .sch-picker .name button:hover {
+        box-shadow: 0px 0px 10px white; }
+    .page .sch-picker-container .sch-picker .name-up {
+      transform: translateY(-300px); }
+    .page .sch-picker-container .sch-picker .name-down {
+      transform: translateY(0px); }
+    .page .sch-picker-container .sch-picker .options {
+      background-color: #78909C;
+      transform: translateY(0);
+      height: inherit;
+      overflow-y: auto;
+      transition: all .5s ease-in-out; }
+      .page .sch-picker-container .sch-picker .options button.cancel {
+        border: none;
+        margin: 10px;
+        font-size: 15px;
+        color: white;
+        background-color: #E57373;
+        width: calc(100% - 20px);
+        padding: 10px;
+        transition: all .2s ease-in-out; }
+      .page .sch-picker-container .sch-picker .options button.cancel:hover {
+        background-color: #EF5350;
+        box-shadow: 0px 0px 10px white; }
+      .page .sch-picker-container .sch-picker .options li {
+        color: white;
+        padding: 15px;
+        border-bottom: 2px solid #90A4AE; }
+      .page .sch-picker-container .sch-picker .options li:hover {
+        background-color: #90A4AE; }
+    .page .sch-picker-container .sch-picker .options-up {
+      transform: translateY(-300px); }
+    .page .sch-picker-container .sch-picker .options-down {
+      transform: translateY(0px); }
   .page .login-container .login-form {
     position: relative; }
     .page .login-container .login-form:before {

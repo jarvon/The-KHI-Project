@@ -1,0 +1,52 @@
+.life-ministry {
+    padding: 0px;
+    
+    .sch-name {
+        display: none;
+    }
+    
+    .print-button {
+        display: none;
+        
+        img {
+            height: 20px;
+        }
+    }
+    
+    .assignments {
+        font-size: 15px;
+        padding: 5px 10px;
+        
+        .small-br {
+            display: block;
+        }
+    }
+    
+    .date {
+        font-size: 20px;
+        padding: 10px;
+        border: none;
+        //border-left: 4px solid $secondaryClr;
+        border-bottom: 1px solid $secondaryClr;
+    }
+    
+    .left {
+        width: 100%;
+    }
+    
+    .right {
+        display: none;
+    }
+    
+    .title1,
+    .title2,
+    .title3,
+    .wbr-header {
+        font-size: 15px;
+        padding: 5px;
+    }
+
+    //Drop Down - @import
+    @import 'drop-down/drop-down';
+
+}

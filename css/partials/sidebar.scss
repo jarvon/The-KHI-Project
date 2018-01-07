@@ -2,15 +2,13 @@
 .sidebar {
     top: 0;
     position: fixed;
-    transform: translateX(-275px);
-    -webkit-transform: translateX(-275px);
     height: 100%;
     width: 274px;
+    transform: translateX(-275px);
+    -webkit-transform: translateX(-275px);
     background-color: white;
     overflow: hidden;
     z-index: 100;
-    //transition: all .3s ease-in-out;
-    //-webkit-transition: all .3s ease-in-out;
     border-right: 1px solid rgb(210, 210, 210);
     
     .sidebar-container {
@@ -40,8 +38,8 @@
                 background-color: $jwLightBlue;
 
                 transform: rotate(50deg);
-            -webkit-transform: rotate(50deg);
-            margin: 23px 0px 0px 0px;
+                -webkit-transform: rotate(50deg);
+                margin: 23px 0px 0px 0px;
                 
             }
             
@@ -54,8 +52,8 @@
                 background-color: $jwLightBlue;
 
                 transform: rotate(50deg);
-            -webkit-transform: rotate(50deg);
-            margin: 23px 0px 0px 0px;
+                -webkit-transform: rotate(50deg);
+                margin: 23px 0px 0px 0px;
             }
             
             .pat3 {
@@ -67,8 +65,8 @@
                 background-color: $jwLightBlue;
 
                 transform: rotate(-50deg);
-            -webkit-transform: rotate(-50deg);
-            margin: 23px 0px 0px 0px;
+                -webkit-transform: rotate(-50deg);
+                margin: 23px 0px 0px 0px;
             }
     
             &:hover {
